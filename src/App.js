@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import PortfolioBackground from "./FramerBackground";
+import TitleSection from "./TitleSection";
+import Menu from "./Menu";
+import SkillsSection from "./SkillsSection";
+import WorkWithMe from "./WorkWithMe";
 
-function App() {
+const App = () => {
+  const skillsSectionRef = useRef(null);
+  const workWithMeRef = useRef(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <PortfolioBackground />
+      <Menu skillsSectionRef={skillsSectionRef} workWithMeRef={workWithMeRef} />
+      <TitleSection />
+      <SkillsSection skillsSectionRef={skillsSectionRef} />
+      <WorkWithMe workWithMeRef={workWithMeRef} />
     </div>
   );
-}
+};
 
 export default App;
