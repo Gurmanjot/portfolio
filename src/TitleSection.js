@@ -7,10 +7,10 @@ const TitleSection = () => {
         Gurmanjot Singh Randhawa
       </h1>
       <h2 className="text-lg sm:text-3xl text-white">
-        ( Frontend Engineer 🎨 )
+        ( Senior Frontend Engineer 🎨 )
       </h2>
       <h2 className="text-lg sm:text-2xl text-white mt-3 sm:mt-5">
-        Current: Senior Frontend@Jisr
+        Current: @Jisr
       </h2>
     </div>
   );
