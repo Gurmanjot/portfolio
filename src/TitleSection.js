@@ -10,7 +10,7 @@ const TitleSection = () => {
         ( Frontend Engineer 🎨 )
       </h2>
       <h2 className="text-lg sm:text-2xl text-white mt-3 sm:mt-5">
-        Current: Frontend@Razorpay
+        Current: Senior Frontend@Jisr
       </h2>
     </div>
   );
