@@ -21,7 +21,7 @@ const Footer = () => {
     {
       name: "Email",
       icon: <FaEnvelope />,
-      href: "mailto:test1dd@gmail.com",
+      href: "mailto:randhawagurman@gmail.com",
       color: "hover:text-red-500",
     },
   ];

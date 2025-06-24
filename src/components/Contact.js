@@ -34,15 +34,10 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       title: "Email",
-      value: "test1dd@gmail.com",
-      link: "mailto:test1dd@gmail.com",
+      value: "randhawagurman@gmail.com",
+      link: "mailto:randhawagurman@gmail.com",
     },
-    {
-      icon: <FaPhone />,
-      title: "Phone",
-      value: "+1 989898989898",
-      link: "tel:+1989898989898",
-    },
+
     {
       icon: <FaMapMarkerAlt />,
       title: "Location",

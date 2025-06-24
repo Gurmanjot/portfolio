@@ -159,8 +159,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🤝 Contact
 
-- **Email**: test1dd@gmail.com
-- **Phone**: +1 989898989898
+- **Email**: test@gmail.com
 - **Location**: Brampton, Ontario, Canada
 - **Portfolio**: [gurmanjot.github.io/portfolio/](https://gurmanjot.github.io/portfolio/)
 

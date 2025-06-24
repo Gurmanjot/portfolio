@@ -78,12 +78,8 @@ const Hero = () => {
           className="flex flex-wrap justify-center gap-6 mb-12"
         >
           <div className="flex items-center space-x-2 text-gray-300">
-            <FaPhone className="text-purple-400" />
-            <span>+1 989898989898</span>
-          </div>
-          <div className="flex items-center space-x-2 text-gray-300">
             <FaEnvelope className="text-purple-400" />
-            <span>test1dd@gmail.com</span>
+            <span>randhawagurman@gmail.com</span>
           </div>
           <div className="flex items-center space-x-2 text-gray-300">
             <span>📍 Brampton, Ontario, Canada</span>
@@ -103,7 +99,7 @@ const Hero = () => {
             <FaGithub className="text-2xl" />
           </a>
           <a
-            href="mailto:test1dd@gmail.com"
+            href="mailto:randhawagurman@gmail.com"
             className="p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 text-white hover:scale-110"
           >
             <FaEnvelope className="text-2xl" />
