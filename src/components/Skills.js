@@ -21,6 +21,7 @@ import {
   SiJira,
   SiRedux,
 } from "react-icons/si";
+import { isMobile } from "../utils/isMobile";
 
 const Skills = () => {
   const skillCategories = [
@@ -115,8 +116,8 @@ const Skills = () => {
 
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true, amount: 0.2 }}
           className="grid md:grid-cols-2 gap-8"
         >
@@ -125,9 +126,9 @@ const Skills = () => {
               key={categoryIndex}
               variants={itemVariants}
               className="bg-white p-6 rounded-xl shadow-lg"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
+              whileHover={isMobile() ? undefined : { scale: 1.03 }}
+              whileTap={isMobile() ? undefined : { scale: 0.97 }}
+              transition={{ duration: isMobile() ? 0 : 0.6 }}
             >
               <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
                 {category.title}

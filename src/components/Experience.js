@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
+import { isMobile } from "../utils/isMobile";
 
 const Experience = () => {
   const experiences = [
@@ -87,8 +88,8 @@ const Experience = () => {
         <motion.div
           className="text-center mb-16"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
         >
           <motion.h2
@@ -109,8 +110,8 @@ const Experience = () => {
 
           <motion.div
             variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={isMobile() ? "visible" : "hidden"}
+            whileInView={isMobile() ? undefined : "visible"}
             viewport={{ once: true, amount: 0.2 }}
             className="space-y-12"
           >
@@ -121,9 +122,9 @@ const Experience = () => {
                 className={`relative flex items-start ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
+                whileHover={isMobile() ? undefined : { scale: 1.03 }}
+                whileTap={isMobile() ? undefined : { scale: 0.97 }}
+                transition={{ duration: isMobile() ? 0 : 0.6 }}
               >
                 {/* Timeline dot */}
                 <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-white shadow-lg"></div>

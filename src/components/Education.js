@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGraduationCap, FaTrophy, FaCalendar } from "react-icons/fa";
+import { isMobile } from "../utils/isMobile";
 
 const Education = () => {
   const education = [
@@ -52,8 +53,8 @@ const Education = () => {
         <motion.div
           className="text-center mb-16"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
         >
           <motion.h2
@@ -70,8 +71,8 @@ const Education = () => {
 
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true, amount: 0.2 }}
           className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
@@ -80,9 +81,9 @@ const Education = () => {
               key={index}
               variants={itemVariants}
               className="bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
+              whileHover={isMobile() ? undefined : { scale: 1.04 }}
+              whileTap={isMobile() ? undefined : { scale: 0.97 }}
+              transition={{ duration: isMobile() ? 0 : 0.6 }}
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="text-purple-500 text-3xl">{edu.icon}</div>
@@ -130,8 +131,8 @@ const Education = () => {
 
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
           className="mt-16 text-center"
         >

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaCode, FaMobile, FaUsers, FaRocket } from "react-icons/fa";
+import { isMobile } from "../utils/isMobile";
 
 const About = () => {
   const containerVariants = {
@@ -56,8 +57,8 @@ const About = () => {
         <motion.div
           className="text-center mb-16"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
         >
           <motion.h2
@@ -75,8 +76,8 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={isMobile() ? "visible" : "hidden"}
+            whileInView={isMobile() ? undefined : "visible"}
             viewport={{ once: true }}
           >
             <motion.h3
@@ -116,8 +117,8 @@ const About = () => {
 
           <motion.div
             variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={isMobile() ? "visible" : "hidden"}
+            whileInView={isMobile() ? undefined : "visible"}
             viewport={{ once: true, amount: 0.2 }}
             className="grid grid-cols-2 gap-6"
           >
@@ -126,9 +127,9 @@ const About = () => {
                 key={index}
                 variants={itemVariants}
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
+                whileHover={isMobile() ? undefined : { scale: 1.05 }}
+                whileTap={isMobile() ? undefined : { scale: 0.97 }}
+                transition={{ duration: isMobile() ? 0 : 0.6 }}
               >
                 <div className="text-purple-500 mb-4">{highlight.icon}</div>
                 <h4 className="text-lg font-semibold text-slate-900 mb-2">
@@ -144,8 +145,8 @@ const About = () => {
 
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
           className="mt-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white"
         >

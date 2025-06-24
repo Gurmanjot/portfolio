@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from "react-icons/fa";
+import { isMobile } from "../utils/isMobile";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -51,8 +52,8 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
           className="text-center"
         >
@@ -77,9 +78,9 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-2xl text-gray-400 transition-colors duration-300 ${link.color}`}
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
+                whileHover={isMobile() ? undefined : { scale: 1.15 }}
+                whileTap={isMobile() ? undefined : { scale: 0.95 }}
+                transition={{ duration: isMobile() ? 0 : 0.6 }}
                 title={link.name}
               >
                 {link.icon}

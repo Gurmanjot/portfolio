@@ -110,3 +110,10 @@ body {
     transition: none !important;
   }
 }
+
+@media (max-width: 767px) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

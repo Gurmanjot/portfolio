@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { isMobile } from "../utils/isMobile";
 
 const projects = [
   {
@@ -80,8 +81,8 @@ const Projects = () => {
         <motion.div
           className="text-center mb-16"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
         >
           <motion.h2
@@ -98,8 +99,8 @@ const Projects = () => {
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true, amount: 0.2 }}
         >
           {projects.map((project, idx) => (
@@ -107,9 +108,9 @@ const Projects = () => {
               key={project.title}
               variants={itemVariants}
               className="bg-slate-50 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
+              whileHover={isMobile() ? undefined : { scale: 1.04 }}
+              whileTap={isMobile() ? undefined : { scale: 0.97 }}
+              transition={{ duration: isMobile() ? 0 : 0.6 }}
             >
               <div className="mb-2 text-xs text-purple-500 font-semibold uppercase tracking-wider">
                 {project.type}

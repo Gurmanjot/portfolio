@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
+import { isMobile } from "../utils/isMobile";
 
 const Hero = () => {
   const containerVariants = {
@@ -50,9 +51,9 @@ const Hero = () => {
       <motion.div
         className="container mx-auto px-6 py-12 text-center relative z-10"
         variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: window.innerWidth < 768 ? 0.4 : 0.8 }}
+        initial={isMobile() ? "visible" : "hidden"}
+        animate={isMobile() ? "visible" : "visible"}
+        transition={{ duration: isMobile() ? 0 : 0.8 }}
       >
         <motion.div variants={itemVariants} className="mb-8 mt-12">
           <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
