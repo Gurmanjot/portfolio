@@ -38,7 +38,7 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants} className="mb-8">
+        <motion.div variants={itemVariants} className="mb-8 mt-12">
           <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
             <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
               <span className="text-4xl font-bold text-white">GS</span>
@@ -87,6 +87,16 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
+          className="flex justify-center items-center transform -translate-x-1/2 my-12"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+          </div>
+        </motion.div>
+
+        <motion.div
           variants={itemVariants}
           className="flex justify-center space-x-6"
         >
@@ -110,15 +120,6 @@ const Hero = () => {
           >
             Get In Touch
           </a>
-        </motion.div>
-        <motion.div
-          className="flex justify-center items-center transform -translate-x-1/2 mt-4"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
-          </div>
         </motion.div>
       </motion.div>
     </section>
