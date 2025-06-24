@@ -1,0 +1,35 @@
+.App {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Ensure proper spacing for fixed navigation */
+main {
+  padding-top: 0;
+}
+
+/* Smooth section transitions */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Custom focus styles for better accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: inherit;
+}

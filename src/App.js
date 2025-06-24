@@ -1,23 +1,31 @@
-import { useRef } from "react";
-import PortfolioBackground from "./FramerBackground";
-import TitleSection from "./TitleSection";
-import Menu from "./Menu";
-import SkillsSection from "./SkillsSection";
-import WorkWithMe from "./WorkWithMe";
+import React from "react";
+import Navigation from "./components/Navigation";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Skills from "./components/Skills";
+import Education from "./components/Education";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import "./App.css";
 
-const App = () => {
-  const skillsSectionRef = useRef(null);
-  const workWithMeRef = useRef(null);
-
+function App() {
   return (
-    <div>
-      <PortfolioBackground />
-      <Menu skillsSectionRef={skillsSectionRef} workWithMeRef={workWithMeRef} />
-      <TitleSection />
-      <SkillsSection skillsSectionRef={skillsSectionRef} />
-      <WorkWithMe workWithMeRef={workWithMeRef} />
+    <div className="App">
+      <Navigation />
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
+        <About />
+        <Experience />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
-};
+}
 
 export default App;

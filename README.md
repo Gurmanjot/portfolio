@@ -1,70 +1,169 @@
-# Getting Started with Create React App
+# Gurmanjot Singh Randhawa - Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive portfolio website showcasing my experience as a Senior Frontend Developer.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Modern Design**: Clean, professional design with smooth animations
+- **Responsive**: Fully responsive across all devices
+- **Performance Optimized**: Built with React and optimized for speed
+- **Accessible**: Follows WCAG guidelines and best practices
+- **Interactive**: Smooth scrolling navigation and engaging animations
+- **SEO Friendly**: Proper meta tags and semantic HTML
 
-### `npm start`
+## 🛠️ Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 18** - Modern React with hooks
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Smooth animations and transitions
+- **React Icons** - Beautiful icon library
+- **Inter Font** - Modern, readable typography
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📱 Sections
 
-### `npm test`
+1. **Hero Section** - Eye-catching introduction with animated background
+2. **About** - Professional summary and key achievements
+3. **Experience** - Detailed work history with timeline layout
+4. **Skills** - Categorized skills with progress indicators
+5. **Education** - Academic background and achievements
+6. **Contact** - Contact form and information
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🎨 Design Highlights
 
-### `npm run build`
+- **Gradient Backgrounds**: Purple to pink gradients for visual appeal
+- **Glass Morphism**: Modern glass-like effects with backdrop blur
+- **Smooth Animations**: Framer Motion powered animations
+- **Timeline Layout**: Professional experience timeline
+- **Progress Bars**: Visual skill proficiency indicators
+- **Hover Effects**: Interactive elements with smooth transitions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js (v14 or higher)
+- npm or yarn
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/gurmanjot/portfolio.git
+cd portfolio
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Install dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm install
+# or
+yarn install
+```
 
-## Learn More
+3. Start the development server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+# or
+yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Code Splitting
+## 📦 Build for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run build
+# or
+yarn build
+```
 
-### Analyzing the Bundle Size
+## 🚀 Deploy to GitHub Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run deploy
+# or
+yarn deploy
+```
 
-### Making a Progressive Web App
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+src/
+├── components/          # React components
+│   ├── Navigation.js   # Navigation bar
+│   ├── Hero.js         # Hero section
+│   ├── About.js        # About section
+│   ├── Experience.js   # Experience timeline
+│   ├── Skills.js       # Skills showcase
+│   ├── Education.js    # Education section
+│   ├── Contact.js      # Contact form
+│   └── Footer.js       # Footer
+├── App.js              # Main App component
+├── App.css             # App-specific styles
+├── index.js            # Entry point
+└── index.css           # Global styles
+```
 
-### Advanced Configuration
+## 🎯 Key Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Performance
 
-### Deployment
+- Optimized bundle size
+- Lazy loading for better performance
+- Efficient animations with Framer Motion
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Accessibility
 
-### `npm run build` fails to minify
+- Semantic HTML structure
+- ARIA labels and roles
+- Keyboard navigation support
+- High contrast ratios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Responsive Design
+
+- Mobile-first approach
+- Breakpoint-specific layouts
+- Touch-friendly interactions
+
+## 🔧 Customization
+
+### Colors
+
+The portfolio uses a purple-pink gradient theme. You can customize colors in:
+
+- `tailwind.config.js` - Theme colors
+- Component files - Individual color classes
+
+### Content
+
+Update your information in the respective component files:
+
+- `Hero.js` - Personal information and introduction
+- `About.js` - Professional summary
+- `Experience.js` - Work history
+- `Skills.js` - Skills and technologies
+- `Education.js` - Educational background
+- `Contact.js` - Contact information
+
+### Styling
+
+- Global styles: `src/index.css`
+- Component styles: Inline Tailwind classes
+- Custom animations: `tailwind.config.js`
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contact
+
+- **Email**: test1dd@gmail.com
+- **Phone**: +1 989898989898
+- **Location**: Brampton, Ontario, Canada
+- **Portfolio**: [gurmanjot.github.io/portfolio/](https://gurmanjot.github.io/portfolio/)
+
+---
+
+Built with ❤️ using React and Tailwind CSS
