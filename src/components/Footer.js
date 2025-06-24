@@ -15,7 +15,7 @@ const Footer = () => {
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
-      href: "https://linkedin.com/in/gurmanjot",
+      href: "https://www.linkedin.com/in/gurmanjot-singh-randhawa/",
       color: "hover:text-blue-600",
     },
     {

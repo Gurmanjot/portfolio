@@ -2,34 +2,12 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaEnvelope,
-  FaPhone,
   FaMapMarkerAlt,
   FaGithub,
   FaLinkedin,
 } from "react-icons/fa";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can integrate with a service like EmailJS, Formspree, or your own backend
-  };
-
   const contactInfo = [
     {
       icon: <FaEnvelope />,
@@ -43,6 +21,12 @@ const Contact = () => {
       title: "Location",
       value: "Brampton, Ontario, Canada",
       link: null,
+    },
+    {
+      icon: <FaLinkedin />,
+      title: "Linkedin",
+      value: "https://www.linkedin.com/in/gurmanjot-singh-randhawa/",
+      link: "https://www.linkedin.com/in/gurmanjot-singh-randhawa/",
     },
     {
       icon: <FaGithub />,
@@ -92,13 +76,6 @@ const Contact = () => {
             variants={itemVariants}
             className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
           ></motion.div>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-300 mt-6 max-w-2xl mx-auto"
-          >
-            I'm always open to discussing new opportunities, interesting
-            projects, or just having a chat about technology.
-          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -158,119 +135,77 @@ const Contact = () => {
               </h4>
               <ul className="text-purple-100 space-y-2">
                 <li>• Full-time opportunities</li>
-                <li>• Contract work</li>
-                <li>• Freelance projects</li>
-                <li>• Technical consulting</li>
               </ul>
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Right Side: Illustration and Message */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            className="flex flex-col items-center justify-center"
           >
+            <motion.div variants={itemVariants} className="mb-8">
+              {/* Modern SVG Illustration */}
+              <svg
+                width="220"
+                height="220"
+                viewBox="0 0 220 220"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="110" cy="110" r="100" fill="url(#paint0_linear)" />
+                <ellipse
+                  cx="110"
+                  cy="150"
+                  rx="60"
+                  ry="20"
+                  fill="#fff"
+                  fillOpacity="0.15"
+                />
+                <circle cx="110" cy="90" r="45" fill="#fff" fillOpacity="0.9" />
+                <circle cx="110" cy="90" r="30" fill="url(#paint1_linear)" />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear"
+                    x1="10"
+                    y1="10"
+                    x2="210"
+                    y2="210"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#a78bfa" />
+                    <stop offset="1" stopColor="#ec4899" />
+                  </linearGradient>
+                  <linearGradient
+                    id="paint1_linear"
+                    x1="80"
+                    y1="60"
+                    x2="140"
+                    y2="120"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#a78bfa" />
+                    <stop offset="1" stopColor="#ec4899" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </motion.div>
             <motion.h3
               variants={itemVariants}
-              className="text-2xl font-bold text-white mb-8"
+              className="text-2xl font-bold text-white mb-4 text-center"
             >
-              Send a Message
+              Let's Connect!
             </motion.h3>
-
-            <motion.form
+            <motion.p
               variants={itemVariants}
-              onSubmit={handleSubmit}
-              className="space-y-6"
+              className="text-lg text-gray-300 text-center max-w-xs"
             >
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-white font-medium mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-white font-medium mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-white font-medium mb-2"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                  placeholder="What's this about?"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-white font-medium mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="6"
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project or opportunity..."
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold py-4 px-8 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Send Message
-              </motion.button>
-            </motion.form>
+              Feel free to reach out via email or connect with me on LinkedIn or
+              GitHub. I look forward to hearing from you!
+            </motion.p>
           </motion.div>
         </div>
       </div>
