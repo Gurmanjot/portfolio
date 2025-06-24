@@ -91,7 +91,7 @@ const Hero = () => {
 
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap justify-center gap-6 mb-12"
+          className="flex flex-wrap justify-center gap-6 mb-6"
         >
           <div className="flex items-center space-x-2 text-gray-300">
             <FaEnvelope className="text-purple-400" />
@@ -103,7 +103,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="flex justify-center items-center transform -translate-x-1/2 my-12"
+          className="flex justify-center items-center transform -translate-x-1/2 mb-12"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
