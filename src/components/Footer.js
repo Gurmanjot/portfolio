@@ -77,8 +77,9 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-2xl text-gray-400 transition-colors duration-300 ${link.color}`}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
                 title={link.name}
               >
                 {link.icon}

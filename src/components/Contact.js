@@ -99,6 +99,9 @@ const Contact = () => {
                   key={index}
                   variants={itemVariants}
                   className="flex items-center space-x-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-white/20 transition-all duration-300"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
                 >
                   <div className="text-purple-400 text-xl">{info.icon}</div>
                   <div>

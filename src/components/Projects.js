@@ -100,13 +100,16 @@ const Projects = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {projects.map((project, idx) => (
             <motion.div
               key={project.title}
               variants={itemVariants}
               className="bg-slate-50 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
             >
               <div className="mb-2 text-xs text-purple-500 font-semibold uppercase tracking-wider">
                 {project.type}

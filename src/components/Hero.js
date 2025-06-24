@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 
@@ -23,10 +23,25 @@ const Hero = () => {
     },
   };
 
+  const blobRef = useRef();
+  useEffect(() => {
+    const handlePointerMove = (e) => {
+      if (window.innerWidth < 768) return; // Only on desktop
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 40;
+      const y = (clientY / window.innerHeight - 0.5) * 40;
+      if (blobRef.current) {
+        blobRef.current.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    };
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, []);
+
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
+      {/* Animated background elements - hide on mobile */}
+      <div className="absolute inset-0 hidden md:block" ref={blobRef}>
         <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
         <div className="absolute top-40 right-20 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-40 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
@@ -37,6 +52,7 @@ const Hero = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
+        transition={{ duration: window.innerWidth < 768 ? 0.4 : 0.8 }}
       >
         <motion.div variants={itemVariants} className="mb-8 mt-12">
           <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
@@ -105,18 +121,24 @@ const Hero = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 text-white hover:scale-110"
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.15 }}
           >
             <FaGithub className="text-2xl" />
           </a>
           <a
             href="mailto:randhawagurman@gmail.com"
             className="p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 text-white hover:scale-110"
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.15 }}
           >
             <FaEnvelope className="text-2xl" />
           </a>
           <a
             href="#contact"
             className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105 shadow-lg"
+            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.07 }}
           >
             Get In Touch
           </a>

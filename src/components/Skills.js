@@ -117,7 +117,7 @@ const Skills = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="grid md:grid-cols-2 gap-8"
         >
           {skillCategories.map((category, categoryIndex) => (
@@ -125,6 +125,9 @@ const Skills = () => {
               key={categoryIndex}
               variants={itemVariants}
               className="bg-white p-6 rounded-xl shadow-lg"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
             >
               <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
                 {category.title}

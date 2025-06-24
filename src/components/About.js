@@ -118,7 +118,7 @@ const About = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="grid grid-cols-2 gap-6"
           >
             {highlights.map((highlight, index) => (
@@ -126,6 +126,9 @@ const About = () => {
                 key={index}
                 variants={itemVariants}
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: window.innerWidth < 768 ? 0.3 : 0.6 }}
               >
                 <div className="text-purple-500 mb-4">{highlight.icon}</div>
                 <h4 className="text-lg font-semibold text-slate-900 mb-2">
