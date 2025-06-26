@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { isMobile } from "../utils/isMobile";
+import { FaMobileAlt, FaGlobe } from "react-icons/fa";
 
 const projects = [
   {
@@ -11,11 +12,25 @@ const projects = [
     type: "Mobile App",
   },
   {
+    title: "Razorpay Web Platform",
+    url: "https://razorpay.com/",
+    description:
+      "Comprehensive payment gateway and business banking platform powering online payments for millions of Indian businesses.",
+    type: "Web App",
+  },
+  {
     title: "Razorpay Payments for Business (iOS)",
     url: "https://apps.apple.com/in/app/razorpay-accept-payments-now/id1497250144",
     description:
       "Official Razorpay app for businesses to accept payments, track sales, and manage refunds on the go.",
     type: "Mobile App",
+  },
+  {
+    title: "Jisr HR Web Platform",
+    url: "https://www.jisr.net/en",
+    description:
+      "Cloud-based HR and payroll management solution for businesses in the MENA region.",
+    type: "Web App",
   },
   {
     title: "Razorpay Payments for Business (Android)",
@@ -38,21 +53,14 @@ const projects = [
       "Android version of Jisr HR for seamless HR operations and employee self-service.",
     type: "Mobile App",
   },
-  {
-    title: "Razorpay Web Platform",
-    url: "https://razorpay.com/",
-    description:
-      "Comprehensive payment gateway and business banking platform powering online payments for millions of Indian businesses.",
-    type: "Web App",
-  },
-  {
-    title: "Jisr HR Web Platform",
-    url: "https://www.jisr.net/en",
-    description:
-      "Cloud-based HR and payroll management solution for businesses in the MENA region.",
-    type: "Web App",
-  },
 ];
+
+const typeIcon = (type) =>
+  type === "Mobile App" ? (
+    <FaMobileAlt className="text-purple-500 text-lg mr-1" />
+  ) : (
+    <FaGlobe className="text-blue-500 text-lg mr-1" />
+  );
 
 const Projects = () => {
   const containerVariants = {
@@ -104,31 +112,41 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           {projects.map((project, idx) => (
-            <a
+            <motion.a
               key={project.title}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-xl"
+              className="block group"
+              variants={itemVariants}
+              whileHover={isMobile() ? undefined : { scale: 1.04 }}
+              whileTap={isMobile() ? undefined : { scale: 0.97 }}
+              transition={{ duration: isMobile() ? 0 : 0.6 }}
             >
-              <motion.div
-                variants={itemVariants}
-                className="bg-slate-50 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer"
-                whileHover={isMobile() ? undefined : { scale: 1.04 }}
-                whileTap={isMobile() ? undefined : { scale: 0.97 }}
-                transition={{ duration: isMobile() ? 0 : 0.6 }}
+              <div
+                className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-xl"
+                tabIndex={0}
               >
-                <div className="mb-2 text-xs text-purple-500 font-semibold uppercase tracking-wider">
-                  {project.type}
+                <div className="flex items-center mb-2">
+                  {typeIcon(project.type)}
+                  <span
+                    className={`ml-2 px-2 py-1 text-xs rounded-full font-semibold tracking-wide ${
+                      project.type === "Mobile App"
+                        ? "bg-purple-100 text-purple-700"
+                        : "bg-blue-100 text-blue-700"
+                    }`}
+                  >
+                    {project.type}
+                  </span>
                 </div>
-                <div className="text-xl font-bold text-slate-900 hover:text-purple-600 transition-colors duration-200">
+                <div className="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors duration-200">
                   {project.title}
                 </div>
-                <p className="text-slate-600 mt-2 text-sm">
+                <p className="text-slate-600 mt-2 text-sm min-h-[48px]">
                   {project.description}
                 </p>
-              </motion.div>
-            </a>
+              </div>
+            </motion.a>
           ))}
         </motion.div>
       </div>
