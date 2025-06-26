@@ -104,29 +104,31 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           {projects.map((project, idx) => (
-            <motion.div
+            <a
               key={project.title}
-              variants={itemVariants}
-              className="bg-slate-50 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
-              whileHover={isMobile() ? undefined : { scale: 1.04 }}
-              whileTap={isMobile() ? undefined : { scale: 0.97 }}
-              transition={{ duration: isMobile() ? 0 : 0.6 }}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-xl"
             >
-              <div className="mb-2 text-xs text-purple-500 font-semibold uppercase tracking-wider">
-                {project.type}
-              </div>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xl font-bold text-slate-900 hover:text-purple-600 transition-colors duration-200"
+              <motion.div
+                variants={itemVariants}
+                className="bg-slate-50 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                whileHover={isMobile() ? undefined : { scale: 1.04 }}
+                whileTap={isMobile() ? undefined : { scale: 0.97 }}
+                transition={{ duration: isMobile() ? 0 : 0.6 }}
               >
-                {project.title}
-              </a>
-              <p className="text-slate-600 mt-2 text-sm">
-                {project.description}
-              </p>
-            </motion.div>
+                <div className="mb-2 text-xs text-purple-500 font-semibold uppercase tracking-wider">
+                  {project.type}
+                </div>
+                <div className="text-xl font-bold text-slate-900 hover:text-purple-600 transition-colors duration-200">
+                  {project.title}
+                </div>
+                <p className="text-slate-600 mt-2 text-sm">
+                  {project.description}
+                </p>
+              </motion.div>
+            </a>
           ))}
         </motion.div>
       </div>

@@ -32,8 +32,8 @@ const Contact = () => {
     {
       icon: <FaGithub />,
       title: "GitHub",
-      value: "gurmanjot.github.io/portfolio/",
-      link: "https://gurmanjot.github.io/portfolio/",
+      value: "https://github.com/gurmanjot",
+      link: "https://github.com/gurmanjot",
     },
   ];
 
