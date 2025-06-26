@@ -4,13 +4,13 @@ import {
   FaReact,
   FaJs,
   FaHtml5,
-  FaCss3Alt,
   FaMobile,
   FaGit,
   FaGithub,
   FaFigma,
   FaDatabase,
   FaRocket,
+  FaCode,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -20,46 +20,77 @@ import {
   SiFirebase,
   SiJira,
   SiRedux,
+  SiDatadog,
+  SiSentry,
+  SiBitrise,
+  SiXcode,
+  SiAndroidstudio,
+  SiSlack,
 } from "react-icons/si";
+import { VscCopilot } from "react-icons/vsc";
+import { TbCursorText } from "react-icons/tb";
+import {
+  MdDesignServices,
+  MdOutlineWebAsset,
+  MdOutlineSpeed,
+} from "react-icons/md";
 import { isMobile } from "../utils/isMobile";
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Frontend Technologies",
+      title: "Languages & Frameworks",
       skills: [
-        { name: "React", icon: <FaReact />, level: 95 },
-        { name: "React Native", icon: <FaMobile />, level: 90 },
-        { name: "JavaScript", icon: <FaJs />, level: 95 },
-        { name: "TypeScript", icon: <SiTypescript />, level: 85 },
-        { name: "HTML/CSS", icon: <FaHtml5 />, level: 90 },
-        { name: "Tailwind CSS", icon: <SiTailwindcss />, level: 88 },
+        { name: "React", icon: <FaReact /> },
+        { name: "React Native", icon: <FaMobile /> },
+        { name: "JavaScript", icon: <FaJs /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "HTML/CSS", icon: <FaHtml5 /> },
+        { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+        { name: "Redux", icon: <SiRedux /> },
+        { name: "Material UI", icon: <MdOutlineWebAsset /> },
+        { name: "Design System", icon: <MdDesignServices /> },
+      ],
+    },
+
+    {
+      title: "Dev Tools",
+      skills: [
+        { name: "VSCode", icon: <FaCode /> },
+        { name: "GitHub Copilot", icon: <VscCopilot /> },
+        { name: "Cursor", icon: <TbCursorText /> },
+        { name: "Xcode", icon: <SiXcode /> },
+        { name: "Android Studio", icon: <SiAndroidstudio /> },
+        { name: "Bitrise", icon: <SiBitrise /> },
+        { name: "Git", icon: <FaGit /> },
+        { name: "GitHub", icon: <FaGithub /> },
       ],
     },
     {
       title: "Testing & Quality",
       skills: [
-        { name: "Jest", icon: <SiJest />, level: 90 },
-        { name: "React Testing Library", icon: <FaReact />, level: 85 },
-        { name: "E2E Testing", icon: <FaRocket />, level: 80 },
+        { name: "Jest (Unit Test)", icon: <SiJest /> },
+        { name: "React Testing Library", icon: <FaReact /> },
+        { name: "E2E Testing", icon: <FaRocket /> },
+        { name: "Sentry", icon: <SiSentry /> },
+        { name: "Datadog", icon: <SiDatadog /> },
       ],
     },
     {
-      title: "Tools & Platforms",
+      title: "Design & Collaboration",
       skills: [
-        { name: "Git", icon: <FaGit />, level: 92 },
-        { name: "GitHub", icon: <FaGithub />, level: 90 },
-        { name: "Jira", icon: <SiJira />, level: 85 },
-        { name: "Figma", icon: <FaFigma />, level: 80 },
-        { name: "Firebase", icon: <SiFirebase />, level: 75 },
+        { name: "Figma", icon: <FaFigma /> },
+        { name: "Slack", icon: <SiSlack /> },
+        { name: "Jira", icon: <SiJira /> },
       ],
     },
     {
-      title: "State Management & APIs",
+      title: "Cloud & APIs",
       skills: [
-        { name: "Redux", icon: <SiRedux />, level: 88 },
-        { name: "GraphQL", icon: <SiGraphql />, level: 80 },
-        { name: "REST APIs", icon: <FaDatabase />, level: 90 },
+        { name: "Firebase", icon: <SiFirebase /> },
+        { name: "GraphQL", icon: <SiGraphql /> },
+        { name: "REST/Ajax", icon: <FaDatabase /> },
+        { name: "Frontend Performance", icon: <MdOutlineSpeed /> },
       ],
     },
   ];
@@ -133,39 +164,19 @@ const Skills = () => {
               <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
                 {category.title}
               </h3>
-
-              <div className="space-y-4">
+              <div className="flex flex-wrap gap-4 justify-center">
                 {category.skills.map((skill, skillIndex) => (
-                  <motion.div
+                  <div
                     key={skillIndex}
-                    variants={itemVariants}
-                    className="space-y-2"
+                    className="flex flex-col items-center w-24 mb-4"
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="text-purple-500 text-xl">
-                          {skill.icon}
-                        </div>
-                        <span className="font-medium text-slate-700">
-                          {skill.name}
-                        </span>
-                      </div>
-                      <span className="text-sm text-slate-500 font-medium">
-                        {skill.level}%
-                      </span>
+                    <div className="text-purple-500 text-3xl mb-2">
+                      {skill.icon}
                     </div>
-
-                    <div className="w-full bg-slate-200 rounded-full h-2">
-                      <motion.div
-                        className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full"
-                        variants={progressVariants}
-                        custom={skill.level}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                      />
-                    </div>
-                  </motion.div>
+                    <span className="font-medium text-slate-700 text-center text-sm">
+                      {skill.name}
+                    </span>
+                  </div>
                 ))}
               </div>
             </motion.div>
