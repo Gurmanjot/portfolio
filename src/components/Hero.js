@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaArrowDown } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
 
 const Hero = () => {
@@ -65,18 +65,18 @@ const Hero = () => {
 
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl font-bold text-white mb-6"
+          className="text-5xl md:text-4xl font-bold text-white mb-6"
         >
           <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
             Gurmanjot Singh
           </span>
           <br />
-          <span className="text-3xl md:text-4xl text-gray-300">Randhawa</span>
+          <span className="text-3xl md:text-3xl text-gray-300">Randhawa</span>
         </motion.h1>
 
         <motion.h2
           variants={itemVariants}
-          className="text-2xl md:text-3xl text-purple-300 mb-8 font-semibold"
+          className="text-2xl md:text-xl text-purple-300 mb-8 font-semibold"
         >
           Senior Frontend Developer
         </motion.h2>
@@ -85,10 +85,30 @@ const Hero = () => {
           variants={itemVariants}
           className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          Frontend Engineer with 6+ years of experience specializing in React
-          development. Building responsive, performant, and accessible user
-          interfaces that drive business value.
+          Frontend Developer with{" "}
+          <span className="bg-gradient-to-r from-yellow-300 to-yellow-500 text-transparent bg-clip-text font-bold">
+            6+ years
+          </span>{" "}
+          of experience specializing in{" "}
+          <span className="bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text font-bold">
+            React development
+          </span>
+          . Building responsive, performant, and accessible user interfaces that{" "}
+          <span className="bg-gradient-to-r from-green-300 to-green-500 text-transparent bg-clip-text font-bold">
+            drive business value
+          </span>
+          .
         </motion.p>
+
+        <motion.div
+          className="flex justify-center items-center transform -translate-x-1/2 mb-12"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+          </div>
+        </motion.div>
 
         <motion.div
           variants={itemVariants}
@@ -104,20 +124,10 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="flex justify-center items-center transform -translate-x-1/2 mb-12"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </motion.div>
-
-        <motion.div
           variants={itemVariants}
           className="flex justify-center space-x-6"
         >
-          <a
+          {/* <a
             href="https://github.com/gurmanjot"
             target="_blank"
             rel="noopener noreferrer"
@@ -134,14 +144,14 @@ const Hero = () => {
             whileHover={{ scale: 1.15 }}
           >
             <FaEnvelope className="text-2xl" />
-          </a>
+          </a> */}
           <a
             href="#contact"
-            className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105 shadow-lg"
+            className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
             whileTap={{ scale: 0.97 }}
             whileHover={{ scale: 1.07 }}
           >
-            Get In Touch
+            Get In Touch <FaArrowDown className=" text-base" />
           </a>
         </motion.div>
       </motion.div>

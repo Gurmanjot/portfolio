@@ -112,19 +112,15 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           {projects.map((project, idx) => (
-            <motion.a
+            <a
               key={project.title}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
               className="block group"
-              variants={itemVariants}
-              whileHover={isMobile() ? undefined : { scale: 1.04 }}
-              whileTap={isMobile() ? undefined : { scale: 0.97 }}
-              transition={{ duration: isMobile() ? 0 : 0.6 }}
             >
               <div
-                className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-xl"
+                className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-xl transform hover:scale-110"
                 tabIndex={0}
               >
                 <div className="flex items-center mb-2">
@@ -146,7 +142,7 @@ const Projects = () => {
                   {project.description}
                 </p>
               </div>
-            </motion.a>
+            </a>
           ))}
         </motion.div>
       </div>

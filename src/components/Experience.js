@@ -421,7 +421,7 @@ const Experience = () => {
 
         <div className="relative">
           {/* Timeline line: thin, centered, minimal */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0  w-0.5 bg-gradient-to-b from-purple-500 to-pink-500"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500 z-0"></div>
 
           <motion.div
             variants={containerVariants}
@@ -443,11 +443,11 @@ const Experience = () => {
               >
                 {/* Content */}
                 <div
-                  className={`ml-16 md:ml-0 md:w-10/12 ${
+                  className={`w-full mx-auto z-10 md:w-10/12 md:mx-0 md:ml-0 ${
                     index % 2 === 0 ? "md:pr-8" : "md:pl-8"
                   }`}
                 >
-                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-100 border border-gray-100">
                     <div className="flex items-center gap-2 text-purple-500 mb-2">
                       <FaBriefcase />
                       <span className="text-base font-medium">
