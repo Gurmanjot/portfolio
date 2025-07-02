@@ -113,6 +113,15 @@ const About = () => {
               and maintainability. Eager to contribute technical excellence and
               creativity to a dynamic development team.
             </motion.p>
+            <motion.div variants={itemVariants} className="mt-6">
+              <a
+                href="/resume.pdf"
+                download="Gurmanjot_Singh_Randhawa_Frontend_Engineer-Resume.pdf"
+                className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105"
+              >
+                Download Resume
+              </a>
+            </motion.div>
           </motion.div>
 
           <motion.div
