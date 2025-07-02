@@ -115,9 +115,9 @@ const About = () => {
             </motion.p>
             <motion.div variants={itemVariants} className="mt-6">
               <a
-                href="/resume.pdf"
-                download="Gurmanjot_Singh_Randhawa_Frontend_Engineer-Resume.pdf"
+                href="https://drive.google.com/file/d/13r0c4ZunhCs5XcLfCjsTx0VrCua0AvCs/view?usp=sharing"
                 className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105"
+                target="_blank"
               >
                 Download Resume
               </a>
