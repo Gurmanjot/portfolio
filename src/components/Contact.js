@@ -7,6 +7,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
+import { trackContactFormEvent, trackSocialClick } from "../utils/analytics";
 
 const Contact = () => {
   const contactInfo = [
@@ -119,6 +120,16 @@ const Contact = () => {
                             ? "noopener noreferrer"
                             : undefined
                         }
+                        onClick={() => {
+                          // Track contact method clicks
+                          if (info.title === "Email") {
+                            trackContactFormEvent("email_click");
+                          } else if (info.title === "Linkedin") {
+                            trackSocialClick("LinkedIn", info.link);
+                          } else if (info.title === "GitHub") {
+                            trackSocialClick("GitHub", info.link);
+                          }
+                        }}
                       >
                         {info.value}
                       </a>

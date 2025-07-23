@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { isMobile } from "../utils/isMobile";
 import { FaMobileAlt, FaGlobe } from "react-icons/fa";
+import { trackProjectClick } from "../utils/analytics";
 
 const projects = [
   {
@@ -118,6 +119,9 @@ const Projects = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="block group"
+              onClick={() =>
+                trackProjectClick(project.title, project.type, project.url)
+              }
             >
               <div
                 className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-xl transform hover:scale-110"

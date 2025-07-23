@@ -12,7 +12,25 @@
       }
       gtag("js", new Date());
 
-      gtag("config", "G-59BQZ4DCFD");
+      gtag("config", "G-59BQZ4DCFD", {
+        send_page_view: false,
+        anonymize_ip: true,
+        allow_google_signals: true,
+        allow_ad_personalization_signals: false,
+        cookie_expires: 63072000,
+        page_title: "Gurmanjot Singh Randhawa - Portfolio",
+        custom_map: {
+          'custom_parameter_1': 'user_type',
+          'custom_parameter_2': 'device_type', 
+          'custom_parameter_3': 'referrer_source'
+        }
+      });
+      
+      // Enhanced user timing and performance tracking
+      gtag('config', 'G-59BQZ4DCFD', {
+        custom_map: {'metric1': 'page_load_time'},
+        send_page_view: false
+      });
     </script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/paintbrush.svg" />

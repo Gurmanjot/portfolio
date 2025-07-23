@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
+import { trackNavigation } from "../utils/analytics";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,10 +27,12 @@ const Navigation = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const scrollToSection = (href) => {
+  const scrollToSection = (href, sectionName) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      // Track navigation click
+      trackNavigation(sectionName);
     }
     setIsOpen(false);
   };
@@ -60,7 +63,7 @@ const Navigation = () => {
             {navItems.map((item, index) => (
               <motion.button
                 key={index}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => scrollToSection(item.href, item.name)}
                 className={`font-medium transition-colors duration-300 hover:text-purple-500 ${
                   scrolled ? "text-slate-700" : "text-white"
                 }`}
@@ -102,7 +105,7 @@ const Navigation = () => {
                 {navItems.map((item, index) => (
                   <motion.button
                     key={index}
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={() => scrollToSection(item.href, item.name)}
                     className="text-left text-slate-700 font-medium py-2 hover:text-purple-500 transition-colors duration-300"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}

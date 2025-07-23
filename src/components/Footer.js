@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
+import { trackSocialClick, trackContactFormEvent } from "../utils/analytics";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -82,6 +83,14 @@ const Footer = () => {
                 whileTap={isMobile() ? undefined : { scale: 0.95 }}
                 transition={{ duration: isMobile() ? 0 : 0.6 }}
                 title={link.name}
+                onClick={() => {
+                  // Track social media clicks from footer
+                  if (link.name === "Email") {
+                    trackContactFormEvent("footer_email_click");
+                  } else {
+                    trackSocialClick(link.name, link.href);
+                  }
+                }}
               >
                 {link.icon}
               </motion.a>
