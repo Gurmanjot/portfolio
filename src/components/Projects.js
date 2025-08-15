@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { isMobile } from "../utils/isMobile";
 import { FaMobileAlt, FaGlobe } from "react-icons/fa";
 import { trackProjectClick } from "../utils/analytics";
+import SectionHeader from "./ui/SectionHeader";
+import CardSpotlight from "./ui/CardSpotlight";
 
 const projects = [
   {
@@ -75,36 +77,18 @@ const Projects = () => {
     },
   };
 
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
-    },
-  };
+  // itemVariants removed after refactor to SectionHeader + CardSpotlight
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section
+      id="projects"
+      className="py-20 bg-white dark:bg-slate-900/40 transition-colors"
+    >
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
-          initial={isMobile() ? "visible" : "hidden"}
-          whileInView={isMobile() ? undefined : "visible"}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-          >
-            Projects
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
-          ></motion.div>
-        </motion.div>
+        <SectionHeader
+          title="Projects"
+          subtitle="Select shipped products & platforms"
+        />
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
@@ -112,21 +96,18 @@ const Projects = () => {
           whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true, amount: 0.2 }}
         >
-          {projects.map((project, idx) => (
+          {projects.map((project) => (
             <a
               key={project.title}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block group"
+              className="block group focus:outline-none"
               onClick={() =>
                 trackProjectClick(project.title, project.type, project.url)
               }
             >
-              <div
-                className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-xl transform hover:scale-110"
-                tabIndex={0}
-              >
+              <CardSpotlight className="bg-gradient-to-br from-slate-50/90 to-white/90 dark:from-slate-800/70 dark:to-slate-800/30 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer focus:ring-2 focus:ring-purple-500/60 dark:focus:ring-pink-500/60 border border-slate-200/60 dark:border-slate-700/60 backdrop-blur">
                 <div className="flex items-center mb-2">
                   {typeIcon(project.type)}
                   <span
@@ -139,13 +120,13 @@ const Projects = () => {
                     {project.type}
                   </span>
                 </div>
-                <div className="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors duration-200">
+                <div className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-pink-400 transition-colors duration-200">
                   {project.title}
                 </div>
-                <p className="text-slate-600 mt-2 text-sm min-h-[48px]">
+                <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm min-h-[48px] leading-relaxed">
                   {project.description}
                 </p>
-              </div>
+              </CardSpotlight>
             </a>
           ))}
         </motion.div>

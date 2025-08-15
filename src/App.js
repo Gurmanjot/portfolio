@@ -8,6 +8,8 @@ import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./theme/ThemeProvider";
+import BackgroundGrid from "./components/ui/BackgroundGrid";
 import useScrollDepthTracking from "./hooks/useScrollDepthTracking";
 import {
   initGA,
@@ -102,21 +104,25 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Navigation />
-      <main>
-        <section id="home">
-          <Hero />
-        </section>
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="App min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-200 transition-colors">
+        <Navigation />
+        <BackgroundGrid>
+          <main className="pt-10">
+            <section id="home">
+              <Hero />
+            </section>
+            <About />
+            <Experience />
+            <Skills />
+            <Projects />
+            <Education />
+            <Contact />
+          </main>
+          <Footer />
+        </BackgroundGrid>
+      </div>
+    </ThemeProvider>
   );
 }
 

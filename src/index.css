@@ -23,6 +23,32 @@ body {
   line-height: 1.6;
 }
 
+/* Design tokens (light + dark) */
+:root {
+  --color-bg: 248 250 252; /* slate-50 */
+  --color-bg-alt: 255 255 255; /* white */
+  --color-fg: 15 23 42; /* slate-900 */
+  --color-fg-muted: 71 85 105; /* slate-600 */
+  --color-accent-start: 168 85 247; /* purple-500 */
+  --color-accent-end: 236 72 153; /* pink-500 */
+  --ring-accent: 236 72 153; /* pink-500 */
+}
+
+.dark:root {
+  --color-bg: 2 6 23; /* slate-950 */
+  --color-bg-alt: 15 23 42; /* slate-900 */
+  --color-fg: 226 232 240; /* slate-200 */
+  --color-fg-muted: 148 163 184; /* slate-400 */
+  --color-accent-start: 236 72 153; /* pink-500 */
+  --color-accent-end: 168 85 247; /* purple-500 */
+  --ring-accent: 168 85 247; /* purple-500 */
+}
+
+body {
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-fg));
+}
+
 /* Custom animations */
 @keyframes blob {
   0% {
@@ -56,25 +82,16 @@ body {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
+::-webkit-scrollbar-track { background: rgb(var(--color-bg-alt)); }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #8b5cf6, #ec4899);
-  border-radius: 4px;
-}
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, rgb(var(--color-accent-start)), rgb(var(--color-accent-end))); border-radius: 4px; }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #7c3aed, #db2777);
 }
 
 /* Smooth transitions */
-* {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
+* { transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; transition-timing-function: cubic-bezier(0.4,0,0.2,1); transition-duration: 160ms; }
 
 /* Focus styles */
 *:focus {
@@ -83,19 +100,11 @@ body {
 }
 
 /* Selection styles */
-::selection {
-  background-color: #8b5cf6;
-  color: white;
-}
+::selection { background: linear-gradient(to right, rgb(var(--color-accent-start)), rgb(var(--color-accent-end))); color:#fff; }
 
 /* Custom utility classes */
 @layer utilities {
-  .text-gradient {
-    background: linear-gradient(to right, #8b5cf6, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  .text-gradient { background: linear-gradient(to right, rgb(var(--color-accent-start)), rgb(var(--color-accent-end))); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   
   .bg-glass {
     background: rgba(255, 255, 255, 0.1);

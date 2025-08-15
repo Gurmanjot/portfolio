@@ -35,6 +35,9 @@ import {
   MdOutlineSpeed,
 } from "react-icons/md";
 import { isMobile } from "../utils/isMobile";
+import SectionHeader from "./ui/SectionHeader";
+import InfiniteMovingItems from "./ui/InfiniteMovingItems";
+import FocusCard from "./ui/FocusCard";
 
 const Skills = () => {
   const skillCategories = [
@@ -115,35 +118,24 @@ const Skills = () => {
     },
   };
 
-  const progressVariants = {
-    hidden: { width: 0 },
-    visible: (level) => ({
-      width: `${level}%`,
-      transition: { duration: 1, delay: 0.3 },
-    }),
-  };
-
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    <section
+      id="skills"
+      className="py-20 bg-slate-50 dark:bg-slate-900 relative"
+    >
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-          >
-            Skills & Technologies
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
-          ></motion.div>
-        </motion.div>
+        <SectionHeader
+          title="Skills & Technologies"
+          subtitle="Core stack, tooling & practices"
+        />
+        <div className="mb-10 rounded-full border border-slate-200 dark:border-slate-700 overflow-hidden bg-white/60 dark:bg-slate-800/60 backdrop-blur supports-[backdrop-filter]:bg-white/40 dark:supports-[backdrop-filter]:bg-slate-800/40">
+          <InfiniteMovingItems
+            items={skillCategories.flatMap((c) =>
+              c.skills.map((s) => ({ label: s.name, icon: s.icon }))
+            )}
+            speed="slow"
+          />
+        </div>
 
         <motion.div
           variants={containerVariants}
@@ -153,32 +145,27 @@ const Skills = () => {
           className="grid md:grid-cols-2 gap-8"
         >
           {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={categoryIndex}
-              variants={itemVariants}
-              className="bg-white p-6 rounded-xl shadow-lg"
-              whileHover={isMobile() ? undefined : { scale: 1.03 }}
-              whileTap={isMobile() ? undefined : { scale: 0.97 }}
-              transition={{ duration: isMobile() ? 0 : 0.6 }}
-            >
-              <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-4 justify-center">
-                {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skillIndex}
-                    className="flex flex-col items-center w-24 mb-4"
-                  >
-                    <div className="text-purple-500 text-3xl mb-2">
-                      {skill.icon}
+            <motion.div key={categoryIndex} variants={itemVariants}>
+              <FocusCard>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 text-center">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div
+                      key={skillIndex}
+                      className="flex flex-col items-center w-24 mb-4"
+                    >
+                      <div className="text-purple-500 dark:text-purple-400 text-3xl mb-2">
+                        {skill.icon}
+                      </div>
+                      <span className="font-medium text-slate-700 dark:text-slate-300 text-center text-sm">
+                        {skill.name}
+                      </span>
                     </div>
-                    <span className="font-medium text-slate-700 text-center text-sm">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </FocusCard>
             </motion.div>
           ))}
         </motion.div>
@@ -188,7 +175,7 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white"
+          className="mt-16 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600 rounded-2xl p-8 text-white"
         >
           <motion.h3
             variants={itemVariants}
@@ -202,19 +189,19 @@ const Skills = () => {
           >
             <div className="text-center">
               <div className="text-2xl font-bold mb-2">Performance</div>
-              <div className="text-purple-100">
+              <div className="text-purple-100 dark:text-purple-200">
                 Web Vitals, Lighthouse, Optimization
               </div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold mb-2">Accessibility</div>
-              <div className="text-purple-100">
+              <div className="text-purple-100 dark:text-purple-200">
                 ARIA Standards, WCAG Guidelines
               </div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold mb-2">Problem Solving</div>
-              <div className="text-purple-100">
+              <div className="text-purple-100 dark:text-purple-200">
                 Debugging, Code Review, Architecture
               </div>
             </div>

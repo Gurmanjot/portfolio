@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGraduationCap, FaTrophy, FaCalendar } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
+import SectionHeader from "./ui/SectionHeader";
+import FocusCard from "./ui/FocusCard";
 
 const Education = () => {
   const education = [
@@ -48,26 +50,15 @@ const Education = () => {
   };
 
   return (
-    <section id="education" className="py-20 bg-white">
+    <section
+      id="education"
+      className="py-20 bg-white dark:bg-slate-900/40 transition-colors"
+    >
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
-          initial={isMobile() ? "visible" : "hidden"}
-          whileInView={isMobile() ? undefined : "visible"}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-          >
-            Education
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
-          ></motion.div>
-        </motion.div>
+        <SectionHeader
+          title="Education"
+          subtitle="Academic foundation & continuous learning"
+        />
 
         <motion.div
           variants={containerVariants}
@@ -77,54 +68,51 @@ const Education = () => {
           className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
           {education.map((edu, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100"
-              whileHover={isMobile() ? undefined : { scale: 1.04 }}
-              whileTap={isMobile() ? undefined : { scale: 0.97 }}
-              transition={{ duration: isMobile() ? 0 : 0.6 }}
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className="text-purple-500 text-3xl">{edu.icon}</div>
-                <div className="text-right">
-                  <div className="flex items-center gap-1 text-slate-500 text-sm">
-                    <FaCalendar />
-                    <span>{edu.period}</span>
+            <motion.div key={index} variants={itemVariants}>
+              <FocusCard className="p-8 bg-white/90 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 backdrop-blur">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="text-purple-500 text-3xl">{edu.icon}</div>
+                  <div className="text-right">
+                    <div className="flex items-center gap-1 text-slate-500 text-sm">
+                      <FaCalendar />
+                      <span>{edu.period}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">
-                {edu.degree}
-              </h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+                  {edu.degree}
+                </h3>
 
-              <h4 className="text-xl text-purple-600 font-semibold mb-3">
-                {edu.field}
-              </h4>
+                <h4 className="text-xl text-purple-600 dark:text-pink-400 font-semibold mb-3">
+                  {edu.field}
+                </h4>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2 text-slate-600">
-                  <span className="font-medium">Institution:</span>
-                  <span>{edu.institution}</span>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                    <span className="font-medium">Institution:</span>
+                    <span>{edu.institution}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                    <span className="font-medium">Type:</span>
+                    <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-sm">
+                      {edu.type}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2 text-slate-600">
-                  <span className="font-medium">Type:</span>
-                  <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-sm">
-                    {edu.type}
-                  </span>
+                <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-4 text-white dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-semibold">Academic Performance</span>
+                    <FaTrophy className="text-yellow-300" />
+                  </div>
+                  <div className="text-2xl font-bold mb-1">{edu.gpa}</div>
+                  <div className="text-purple-100 text-sm">
+                    {edu.achievement}
+                  </div>
                 </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-4 text-white">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold">Academic Performance</span>
-                  <FaTrophy className="text-yellow-300" />
-                </div>
-                <div className="text-2xl font-bold mb-1">{edu.gpa}</div>
-                <div className="text-purple-100 text-sm">{edu.achievement}</div>
-              </div>
+              </FocusCard>
             </motion.div>
           ))}
         </motion.div>
@@ -138,12 +126,12 @@ const Education = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="bg-slate-50 rounded-2xl p-8 max-w-2xl mx-auto"
+            className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 rounded-2xl p-8 max-w-2xl mx-auto backdrop-blur"
           >
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
               Continuous Learning
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               I believe in continuous learning and staying updated with the
               latest technologies and best practices. My educational background
               in Computer Science combined with 6+ years of practical experience

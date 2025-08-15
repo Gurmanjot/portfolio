@@ -49,7 +49,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-slate-900 dark:bg-slate-950 text-white">
       <div className="container mx-auto px-6 py-12">
         <motion.div
           variants={containerVariants}
@@ -62,7 +62,7 @@ const Footer = () => {
             <h3 className="text-2xl font-bold mb-4">
               Gurmanjot Singh Randhawa
             </h3>
-            <p className="text-gray-300 max-w-md mx-auto">
+            <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
               Senior Frontend Developer passionate about creating exceptional
               user experiences and building scalable web applications.
             </p>
@@ -78,7 +78,7 @@ const Footer = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-2xl text-gray-400 transition-colors duration-300 ${link.color}`}
+                className={`text-2xl text-gray-400 dark:text-gray-500 transition-colors duration-300 ${link.color} dark:hover:text-gray-300`}
                 whileHover={isMobile() ? undefined : { scale: 1.15 }}
                 whileTap={isMobile() ? undefined : { scale: 0.95 }}
                 transition={{ duration: isMobile() ? 0 : 0.6 }}
@@ -99,13 +99,13 @@ const Footer = () => {
 
           <motion.div
             variants={itemVariants}
-            className="border-t border-gray-700 pt-8"
+            className="border-t border-gray-700 dark:border-gray-800 pt-8"
           >
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 dark:text-gray-500 text-sm">
                 © {currentYear} Gurmanjot Singh Randhawa. All rights reserved.
               </p>
-              <p className="text-gray-400 text-sm flex items-center">
+              <p className="text-gray-400 dark:text-gray-500 text-sm flex items-center">
                 Made with <FaHeart className="text-red-500 mx-1" /> using React
                 & Tailwind CSS
               </p>

@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
+import SectionHeader from "./ui/SectionHeader";
 
 const Experience = () => {
   const experiences = [
@@ -398,26 +399,15 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20 bg-white">
+    <section
+      id="experience"
+      className="py-20 bg-white dark:bg-slate-900/40 transition-colors"
+    >
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
-          initial={isMobile() ? "visible" : "hidden"}
-          whileInView={isMobile() ? undefined : "visible"}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-          >
-            Experience
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
-          ></motion.div>
-        </motion.div>
+        <SectionHeader
+          title="Experience"
+          subtitle="Impact & growth across roles"
+        />
 
         <div className="relative">
           {/* Timeline line: thin, centered, minimal */}
@@ -447,7 +437,7 @@ const Experience = () => {
                     index % 2 === 0 ? "md:pr-8" : "md:pl-8"
                   }`}
                 >
-                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-100 border border-gray-100">
+                  <div className="bg-white/90 dark:bg-slate-800/60 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-100 border border-gray-100 dark:border-slate-700/60 backdrop-blur">
                     <div className="flex items-center gap-2 text-purple-500 mb-2">
                       <FaBriefcase />
                       <span className="text-base font-medium">
@@ -455,11 +445,11 @@ const Experience = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
                       {exp.title}
                     </h3>
 
-                    <div className="flex items-center gap-4 text-slate-600 mb-4">
+                    <div className="flex items-center gap-4 text-slate-600 dark:text-slate-400 mb-4">
                       <div className="flex items-center gap-1">
                         <FaMapMarkerAlt className="text-base" />
                         <span className="text-base">{exp.company}</span>
@@ -477,7 +467,7 @@ const Experience = () => {
                           return (
                             <li
                               key={idx}
-                              className="text-slate-600 text-base flex items-start gap-2"
+                              className="text-slate-600 dark:text-slate-400 text-base flex items-start gap-2"
                             >
                               <span className="text-purple-500">•</span>
                               <span>
@@ -522,7 +512,7 @@ const Experience = () => {
                           return (
                             <li
                               key={idx}
-                              className={`text-slate-600 text-base flex items-start gap-2 ${
+                              className={`text-slate-600 dark:text-slate-400 text-base flex items-start gap-2 ${
                                 highlight ? "font-bold text-pink-600" : ""
                               }`}
                             >
@@ -541,7 +531,7 @@ const Experience = () => {
                           return (
                             <li
                               key={idx}
-                              className="text-slate-600 text-base flex items-start gap-2"
+                              className="text-slate-600 dark:text-slate-400 text-base flex items-start gap-2"
                             >
                               <span className="text-purple-500 mt-1">•</span>
                               <span>{achievement}</span>

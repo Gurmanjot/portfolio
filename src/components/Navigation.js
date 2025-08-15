@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
 import { trackNavigation } from "../utils/analytics";
+import ThemeToggle from "./ui/ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,54 +40,52 @@ const Navigation = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
-      initial={{ y: isMobile() ? 0 : -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: isMobile() ? 0 : 0.6 }}
+      className={`fixed top-4 inset-x-0 z-50 flex justify-center`}
+      initial={{ y: isMobile() ? 0 : -90, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <motion.div
-            className="text-2xl font-bold"
+      <div
+        className={`mx-4 md:mx-8 flex-1 max-w-6xl rounded-2xl border backdrop-blur-md px-4 md:px-6 py-2.5 shadow-sm transition-colors ${
+          scrolled
+            ? "bg-white/80 dark:bg-slate-900/70 border-white/50 dark:border-slate-700/60 shadow-lg"
+            : "bg-white/40 dark:bg-slate-900/50 border-white/40 dark:border-slate-700/40"
+        } `}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <motion.button
             whileHover={isMobile() ? undefined : { scale: 1.05 }}
+            className="text-lg md:text-xl font-extrabold tracking-tight text-slate-800 dark:text-white"
+            onClick={() => scrollToSection("#home", "Home")}
           >
-            <span className={scrolled ? "text-slate-900" : "text-white"}>
-              GS
-            </span>
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+            GS
+          </motion.button>
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item, index) => (
               <motion.button
-                key={index}
+                key={item.name}
                 onClick={() => scrollToSection(item.href, item.name)}
-                className={`font-medium transition-colors duration-300 hover:text-purple-500 ${
-                  scrolled ? "text-slate-700" : "text-white"
-                }`}
+                className="relative text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                 whileHover={isMobile() ? undefined : { y: -2 }}
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: isMobile() ? 0 : index * 0.1 }}
+                transition={{ delay: isMobile() ? 0 : index * 0.05 + 0.15 }}
               >
                 {item.name}
               </motion.button>
             ))}
+            <ThemeToggle />
           </div>
-
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2 rounded-lg"
-            onClick={() => setIsOpen(!isOpen)}
-            whileTap={isMobile() ? undefined : { scale: 0.95 }}
-          >
-            <div className={scrolled ? "text-slate-900" : "text-white"}>
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </div>
-          </motion.button>
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <motion.button
+              className="p-2 rounded-lg text-slate-700 dark:text-slate-200"
+              onClick={() => setIsOpen(!isOpen)}
+              whileTap={isMobile() ? undefined : { scale: 0.92 }}
+            >
+              {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+            </motion.button>
+          </div>
         </div>
       </div>
 
@@ -94,27 +93,25 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: isMobile() ? 0 : 0.3 }}
+            className="md:hidden mx-4 mt-3 rounded-2xl border border-white/50 dark:border-slate-700/70 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl overflow-hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
           >
-            <div className="container mx-auto px-6 py-4">
-              <div className="flex flex-col space-y-4">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={index}
-                    onClick={() => scrollToSection(item.href, item.name)}
-                    className="text-left text-slate-700 font-medium py-2 hover:text-purple-500 transition-colors duration-300"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: isMobile() ? 0 : index * 0.1 }}
-                  >
-                    {item.name}
-                  </motion.button>
-                ))}
-              </div>
+            <div className="px-4 py-4 flex flex-col gap-1">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href, item.name)}
+                  className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.04 }}
+                >
+                  {item.name}
+                </motion.button>
+              ))}
             </div>
           </motion.div>
         )}

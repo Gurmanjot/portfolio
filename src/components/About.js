@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaCode, FaMobile, FaUsers, FaRocket } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
+import SectionHeader from "./ui/SectionHeader";
 
 const About = () => {
   const containerVariants = {
@@ -52,26 +53,15 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-slate-50">
+    <section
+      id="about"
+      className="py-20 bg-slate-50 dark:bg-slate-900/40 transition-colors"
+    >
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
-          initial={isMobile() ? "visible" : "hidden"}
-          whileInView={isMobile() ? undefined : "visible"}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-          >
-            About Me
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
-          ></motion.div>
-        </motion.div>
+        <SectionHeader
+          title="About Me"
+          subtitle="Builder focused on performance, DX & delightful UI"
+        />
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -82,13 +72,13 @@ const About = () => {
           >
             <motion.h3
               variants={itemVariants}
-              className="text-2xl font-bold text-slate-900 mb-6"
+              className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6"
             >
               Senior Frontend Developer
             </motion.h3>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-slate-600 leading-relaxed mb-6"
+              className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
             >
               Front End Engineer with 6 years of experience specializing in
               React development. Extensive knowledge of JavaScript, proficiency
@@ -97,7 +87,7 @@ const About = () => {
             </motion.p>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-slate-600 leading-relaxed mb-6"
+              className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
             >
               Also well-versed in React Native for cross platform mobile app
               development. Collaborated with stakeholders to gather requirements
@@ -107,7 +97,7 @@ const About = () => {
             </motion.p>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-slate-600 leading-relaxed"
+              className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
             >
               Skilled in writing unit tests with Jest to ensure code reliability
               and maintainability. Eager to contribute technical excellence and
@@ -118,6 +108,7 @@ const About = () => {
                 href="https://drive.google.com/file/d/13r0c4ZunhCs5XcLfCjsTx0VrCua0AvCs/view?usp=sharing"
                 className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Download Resume
               </a>
@@ -135,16 +126,16 @@ const About = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="bg-white/90 dark:bg-slate-800/60 backdrop-blur p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-200/60 dark:border-slate-700/60"
                 whileHover={isMobile() ? undefined : { scale: 1.05 }}
                 whileTap={isMobile() ? undefined : { scale: 0.97 }}
                 transition={{ duration: isMobile() ? 0 : 0.6 }}
               >
                 <div className="text-purple-500 mb-4">{highlight.icon}</div>
-                <h4 className="text-lg font-semibold text-slate-900 mb-2">
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
                   {highlight.title}
                 </h4>
-                <p className="text-slate-600 text-sm">
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
                   {highlight.description}
                 </p>
               </motion.div>
@@ -157,7 +148,7 @@ const About = () => {
           initial={isMobile() ? "visible" : "hidden"}
           whileInView={isMobile() ? undefined : "visible"}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white"
+          className="mt-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)]"
         >
           <motion.h3
             variants={itemVariants}
