@@ -108,7 +108,7 @@ function App() {
       <div className="App min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-200 transition-colors">
         <Navigation />
         <BackgroundGrid>
-          <main className="pt-10">
+          <main>
             <section id="home">
               <Hero />
             </section>
