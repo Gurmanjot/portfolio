@@ -65,7 +65,7 @@ const Navigation = () => {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href, item.name)}
-                className="relative text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+                className="relative text-sm font-medium text-black dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                 whileHover={isMobile() ? undefined : { y: -2 }}
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
