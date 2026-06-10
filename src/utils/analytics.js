@@ -326,6 +326,46 @@ export const trackVisitorJourney = (journeyStage, additionalData = {}) => {
   }
 };
 
+// Identify which company opened the portfolio via a tracking link.
+// Send each company a unique URL, e.g. https://yoursite.com/?ref=razorpay
+// (also accepts ?company= or the standard ?utm_source=). When that link is
+// opened, a `company_visit` event is logged and the value is stamped on the
+// session so it shows up across all subsequent GA events for that visit.
+export const trackCompanyVisit = () => {
+  if (typeof window === "undefined" || !window.gtag) return null;
+
+  const params = new URLSearchParams(window.location.search);
+  // Prefer an explicit ref/company param; fall back to utm_source.
+  const fromUrl =
+    params.get("ref") || params.get("company") || params.get("utm_source");
+
+  // Persist across in-session navigation so the attribution isn't lost
+  // once the visitor scrolls/clicks and the query string is gone.
+  if (fromUrl) {
+    sessionStorage.setItem("portfolioCompanyRef", fromUrl);
+  }
+  const company = fromUrl || sessionStorage.getItem("portfolioCompanyRef");
+
+  if (!company) return null;
+
+  // Stamp it on the GA config so every later event carries the company.
+  window.gtag("set", { company_ref: company });
+
+  // Fire a dedicated event only on the visit that arrived via the link.
+  if (fromUrl) {
+    window.gtag("event", "company_visit", {
+      event_category: "Company Attribution",
+      event_label: company,
+      company_ref: company,
+      landing_page: window.location.pathname,
+      referrer: document.referrer || "direct",
+      interaction_type: "tracking_link",
+    });
+  }
+
+  return company;
+};
+
 // Track interest signals based on time spent on sections
 export const trackInterestSignal = (section, timeSpent, engagementLevel) => {
   if (typeof window !== "undefined" && window.gtag) {

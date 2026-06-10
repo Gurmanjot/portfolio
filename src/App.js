@@ -16,6 +16,7 @@ import BackgroundGrid from "./components/ui/BackgroundGrid";
 import useScrollDepthTracking from "./hooks/useScrollDepthTracking";
 import {
   initGA,
+  trackCompanyVisit,
   trackPageView,
   trackSessionStart,
   trackSessionEnd,
@@ -37,6 +38,10 @@ function App() {
 
     // Initialize enhanced Google Analytics
     initGA();
+
+    // Identify the company via ?ref= tracking link (stamps company_ref on
+    // the session so it appears on the events fired below).
+    trackCompanyVisit();
 
     // Track session start
     trackSessionStart();
@@ -85,7 +90,7 @@ function App() {
       const sessionStart = sessionStorage.getItem("portfolioSessionStart");
       if (sessionStart) {
         const timeOnPage = Math.round(
-          (Date.now() - parseInt(sessionStart)) / 1000
+          (Date.now() - parseInt(sessionStart)) / 1000,
         );
         trackTimeOnPage(timeOnPage, "Portfolio");
       }
