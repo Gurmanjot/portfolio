@@ -1,158 +1,161 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaArrowDown } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaLinkedin,
+  FaGithub,
+  FaArrowDown,
+  FaFileAlt,
+} from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
+
+const RESUME_URL =
+  "https://drive.google.com/file/d/13r0c4ZunhCs5XcLfCjsTx0VrCua0AvCs/view?usp=sharing";
 
 const Hero = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      },
+      transition: { duration: 0.6, staggerChildren: 0.12 },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
-    },
+    hidden: { y: 16, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
 
-  const blobRef = useRef();
-  useEffect(() => {
-    const handlePointerMove = (e) => {
-      if (window.innerWidth < 768) return; // Only on desktop
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 40;
-      const y = (clientY / window.innerHeight - 0.5) * 40;
-      if (blobRef.current) {
-        blobRef.current.style.transform = `translate(${x}px, ${y}px)`;
-      }
-    };
-    window.addEventListener("pointermove", handlePointerMove);
-    return () => window.removeEventListener("pointermove", handlePointerMove);
-  }, []);
+  const credentials = [
+    "7+ yrs",
+    "Ex-Razorpay",
+    "Ex-GeekyAnts",
+    "Greater Toronto Area 🇨🇦",
+  ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Animated background elements - hide on mobile */}
-      <div className="absolute inset-0 hidden md:block" ref={blobRef}>
-        <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-40 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+    <section className="min-h-screen flex items-center bg-slate-50 dark:bg-[#080c14] relative overflow-hidden">
+      {/* Subtle accent glow, single hue */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 -left-20 w-[28rem] h-[28rem] bg-accent-500/10 dark:bg-accent-500/15 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[24rem] h-[24rem] bg-accent-400/5 dark:bg-accent-400/10 rounded-full blur-[120px]" />
       </div>
 
       <motion.div
-        className="container mx-auto px-6 py-12 text-center relative z-10"
+        className="container mx-auto px-6 py-24 relative z-10 max-w-4xl"
         variants={containerVariants}
         initial={isMobile() ? "visible" : "hidden"}
-        animate={isMobile() ? "visible" : "visible"}
-        transition={{ duration: isMobile() ? 0 : 0.8 }}
+        animate="visible"
       >
-        <motion.div variants={itemVariants} className="mb-8 mt-12">
-          <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
-            <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
-              <span className="text-4xl font-bold text-white">GS</span>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-4xl font-bold text-white mb-6"
-        >
-          <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Gurmanjot Singh
+        {/* Open to work pill */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-xs text-emerald-600 dark:text-emerald-400">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            Open to full-time opportunities
           </span>
-          <br />
-          <span className="text-3xl md:text-3xl text-gray-300">Randhawa</span>
-        </motion.h1>
-
-        <motion.h2
-          variants={itemVariants}
-          className="text-2xl md:text-xl text-purple-300 mb-8 font-semibold"
-        >
-          Senior Frontend Developer
-        </motion.h2>
+        </motion.div>
 
         <motion.p
           variants={itemVariants}
-          className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="font-mono text-sm text-accent-600 dark:text-accent-400 mb-4"
         >
-          Frontend Developer with{" "}
-          <span className="bg-gradient-to-r from-yellow-300 to-yellow-500 text-transparent bg-clip-text font-bold">
-            6+ years
+          Gurmanjot Singh Randhawa
+        </motion.p>
+
+        <motion.h1
+          variants={itemVariants}
+          className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-slate-50 mb-5 leading-[1.1]"
+        >
+          Senior Mobile &amp; Frontend Engineer
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          className="font-mono text-sm md:text-base text-slate-500 dark:text-slate-400 mb-8"
+        >
+          React Native · React · TypeScript · iOS &amp; Android
+        </motion.p>
+
+        <motion.p
+          variants={itemVariants}
+          className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl leading-relaxed"
+        >
+          7+ years building{" "}
+          <span className="text-slate-900 dark:text-slate-100 font-semibold">
+            scalable React Native &amp; React applications
           </span>{" "}
-          of experience specializing in{" "}
-          <span className="bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text font-bold">
-            React development
-          </span>
-          . Building responsive, performant, and accessible user interfaces that{" "}
-          <span className="bg-gradient-to-r from-green-300 to-green-500 text-transparent bg-clip-text font-bold">
-            drive business value
+          for iOS, Android and web. Focused on mobile architecture, performance,
+          CI/CD and shipping reliable products to{" "}
+          <span className="text-accent-600 dark:text-accent-400 font-semibold">
+            80,000+ users
           </span>
           .
         </motion.p>
 
-        <motion.div
-          className="flex justify-center items-center transform -translate-x-1/2 mb-12"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </motion.div>
-
+        {/* Credibility row */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap justify-center gap-6 mb-6"
+          className="flex flex-wrap gap-x-3 gap-y-2 mb-10 font-mono text-xs text-slate-500 dark:text-slate-400"
         >
-          <div className="flex items-center space-x-2 text-gray-300">
-            <FaEnvelope className="text-purple-400" />
-            <span>randhawagurman@gmail.com</span>
-          </div>
-          <div className="flex items-center space-x-2 text-gray-300">
-            <span>📍 Brampton, Ontario, Canada</span>
-          </div>
+          {credentials.map((c, i) => (
+            <React.Fragment key={c}>
+              {i > 0 && (
+                <span className="text-slate-300 dark:text-slate-700">·</span>
+              )}
+              <span>{c}</span>
+            </React.Fragment>
+          ))}
         </motion.div>
 
+        {/* CTAs */}
         <motion.div
           variants={itemVariants}
-          className="flex justify-center space-x-6"
+          className="flex flex-wrap items-center gap-3"
         >
-          {/* <a
-            href="https://github.com/gurmanjot"
+          <a
+            href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 text-white hover:scale-110"
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.15 }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent-600 hover:bg-accent-500 text-white font-semibold text-sm transition-colors shadow-sm"
           >
-            <FaGithub className="text-2xl" />
+            <FaFileAlt /> View Résumé
           </a>
-          <a
-            href="mailto:randhawagurman@gmail.com"
-            className="p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 text-white hover:scale-110"
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.15 }}
-          >
-            <FaEnvelope className="text-2xl" />
-          </a> */}
           <a
             href="#contact"
-            className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
-            whileTap={{ scale: 0.97 }}
-            whileHover={{ scale: 1.07 }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-accent-500 hover:text-accent-600 dark:hover:text-accent-400 font-semibold text-sm transition-colors"
           >
-            Get In Touch <FaArrowDown className=" text-base" />
+            Get in touch <FaArrowDown className="text-xs" />
           </a>
+          <div className="flex items-center gap-1 ml-1">
+            <a
+              href="https://www.linkedin.com/in/gurmanjot-singh-randhawa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="p-3 rounded-lg text-slate-500 hover:text-accent-600 dark:hover:text-accent-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
+            >
+              <FaLinkedin className="text-xl" />
+            </a>
+            <a
+              href="https://github.com/gurmanjot"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="p-3 rounded-lg text-slate-500 hover:text-accent-600 dark:hover:text-accent-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
+            >
+              <FaGithub className="text-xl" />
+            </a>
+            <a
+              href="mailto:randhawagurman@gmail.com"
+              aria-label="Email"
+              className="p-3 rounded-lg text-slate-500 hover:text-accent-600 dark:hover:text-accent-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
+            >
+              <FaEnvelope className="text-xl" />
+            </a>
+          </div>
         </motion.div>
       </motion.div>
     </section>

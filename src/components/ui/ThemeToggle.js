@@ -35,10 +35,10 @@ const ThemeToggle = () => {
     <motion.button
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="group relative inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-pink-400/60 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900 transition-colors"
+      className="group relative inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-400/60 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900 hover:border-accent-400/70 transition-colors"
       whileTap={{ scale: 0.88 }}
     >
-      <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-purple-500/0 via-pink-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:via-pink-500/10 group-hover:to-purple-500/10 transition-all" />
+      <span className="absolute inset-0 rounded-xl bg-accent-500/0 group-hover:bg-accent-500/10 transition-all" />
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={theme}

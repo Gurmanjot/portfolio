@@ -7,6 +7,8 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Recommendations from "./components/Recommendations";
+import Awards from "./components/Awards";
+import TechTalks from "./components/TechTalks";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./theme/ThemeProvider";
@@ -106,7 +108,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="App min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-200 transition-colors">
+      <div className="App min-h-screen bg-slate-50 dark:bg-[#080c14] text-slate-900 dark:text-slate-200 transition-colors">
         <Navigation />
         <BackgroundGrid>
           <main>
@@ -117,8 +119,10 @@ function App() {
             <Experience />
             <Skills />
             <Projects />
-            <Education />
             <Recommendations />
+            <Awards />
+            <TechTalks />
+            <Education />
             <Contact />
           </main>
           <Footer />

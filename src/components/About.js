@@ -1,143 +1,138 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCode, FaMobile, FaUsers, FaRocket } from "react-icons/fa";
+import {
+  FaMobileAlt,
+  FaServer,
+  FaRocket,
+  FaUsers,
+  FaFileAlt,
+} from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
 import SectionHeader from "./ui/SectionHeader";
+import Metric from "./ui/Metric";
+
+const RESUME_URL =
+  "https://drive.google.com/file/d/13r0c4ZunhCs5XcLfCjsTx0VrCua0AvCs/view?usp=sharing";
 
 const About = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.15 } },
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
-    },
+    hidden: { y: 24, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
+
+  const metrics = [
+    { value: "7+", label: "Years experience" },
+    { value: "80k+", label: "Users secured" },
+    { value: "90%", label: "Test coverage" },
+    { value: "99%", label: "Crash-free sessions" },
+  ];
 
   const highlights = [
     {
-      icon: <FaCode className="text-3xl" />,
-      title: "React Specialist",
+      icon: <FaMobileAlt />,
+      title: "Cross-Platform Mobile",
       description:
-        "6+ years of React development with expertise in modern patterns and best practices",
+        "React Native apps for iOS & Android with native module integrations and platform-specific debugging.",
     },
     {
-      icon: <FaMobile className="text-3xl" />,
-      title: "Cross-Platform",
+      icon: <FaServer />,
+      title: "Architecture & APIs",
       description:
-        "React Native development for mobile apps with 80k+ active users",
+        "Modular, feature-based architecture with REST, GraphQL, WebSockets and shared TypeScript contracts.",
     },
     {
-      icon: <FaUsers className="text-3xl" />,
-      title: "Team Leadership",
+      icon: <FaRocket />,
+      title: "CI/CD & Performance",
       description:
-        "Led frontend teams, mentored developers, and collaborated with stakeholders",
+        "Automated release pipelines with Bitrise, OTA updates, and web-vitals / bundle optimization.",
     },
     {
-      icon: <FaRocket className="text-3xl" />,
-      title: "Performance Focus",
+      icon: <FaUsers />,
+      title: "Mentoring & Collaboration",
       description:
-        "Optimized web vitals, improved Lighthouse scores, and enhanced user experience",
+        "Mentored developers, owned estimation & releases, and partnered closely with product and design.",
     },
   ];
 
   return (
     <section
       id="about"
-      className="py-20 bg-slate-50 dark:bg-slate-900/40 transition-colors"
+      className="py-24 bg-slate-50 dark:bg-slate-900/30 transition-colors"
     >
-      <div className="container mx-auto px-6">
-        <SectionHeader
-          title="About Me"
-          subtitle="Builder focused on performance, DX & delightful UI"
-        />
+      <div className="container mx-auto px-6 max-w-4xl">
+        <SectionHeader eyebrow="// about" title="About me" />
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-5 gap-10">
           <motion.div
+            className="lg:col-span-3"
             variants={containerVariants}
             initial={isMobile() ? "visible" : "hidden"}
             whileInView={isMobile() ? undefined : "visible"}
             viewport={{ once: true }}
           >
-            <motion.h3
-              variants={itemVariants}
-              className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6"
-            >
-              Senior Frontend Developer
-            </motion.h3>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
+              className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-5"
             >
-              Front End Engineer with 6 years of experience specializing in
-              React development. Extensive knowledge of JavaScript, proficiency
-              in Git for version control, and expertise in building responsive
-              and visually appealing user interfaces with HTML, CSS and React.
+              I'm a Senior Mobile &amp; Frontend Engineer with{" "}
+              <span className="text-slate-900 dark:text-slate-100 font-semibold">
+                7+ years
+              </span>{" "}
+              building scalable React Native applications for iOS and Android,
+              alongside React on the web. I care about mobile architecture,
+              performance optimization, CI/CD, and shipping reliable products in
+              fast-paced Agile teams.
             </motion.p>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
+              className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-5"
             >
-              Also well-versed in React Native for cross platform mobile app
-              development. Collaborated with stakeholders to gather requirements
-              and feedback for continuous improvement. Proven track record of
-              collaborating effectively with teams using Jira, and adept at
-              implementing GraphQL for efficient data fetching.
+              I've worked across fintech (Razorpay), HR tech (JISR), and gaming
+              (GeekyAnts) — defining API contracts with backend teams, building
+              reusable component systems, and tightening reliability through
+              testing with Jest, RTL and Detox.
             </motion.p>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+              className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-7"
             >
-              Skilled in writing unit tests with Jest to ensure code reliability
-              and maintainability. Eager to contribute technical excellence and
-              creativity to a dynamic development team.
+              I lean on AI-assisted development with{" "}
+              <span className="text-slate-900 dark:text-slate-100 font-semibold">
+                Cursor and Claude Code
+              </span>{" "}
+              to accelerate delivery while maintaining production-grade
+              engineering standards.
             </motion.p>
-            <motion.div variants={itemVariants} className="mt-6">
-              <a
-                href="https://drive.google.com/file/d/13r0c4ZunhCs5XcLfCjsTx0VrCua0AvCs/view?usp=sharing"
-                className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download Resume
-              </a>
-            </motion.div>
+            <motion.a
+              variants={itemVariants}
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-accent-600 hover:bg-accent-500 text-white font-semibold text-sm transition-colors"
+            >
+              <FaFileAlt /> View résumé
+            </motion.a>
           </motion.div>
 
           <motion.div
+            className="lg:col-span-2 grid grid-cols-2 gap-4 content-start"
             variants={containerVariants}
             initial={isMobile() ? "visible" : "hidden"}
             whileInView={isMobile() ? undefined : "visible"}
             viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-2 gap-6"
           >
-            {highlights.map((highlight, index) => (
+            {metrics.map((m) => (
               <motion.div
-                key={index}
+                key={m.label}
                 variants={itemVariants}
-                className="bg-white/90 dark:bg-slate-800/60 backdrop-blur p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-200/60 dark:border-slate-700/60"
-                whileHover={isMobile() ? undefined : { scale: 1.05 }}
-                whileTap={isMobile() ? undefined : { scale: 0.97 }}
-                transition={{ duration: isMobile() ? 0 : 0.6 }}
+                className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 py-6 px-3"
               >
-                <div className="text-purple-500 mb-4">{highlight.icon}</div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                  {highlight.title}
-                </h4>
-                <p className="text-slate-600 dark:text-slate-400 text-sm">
-                  {highlight.description}
-                </p>
+                <Metric value={m.value} label={m.label} />
               </motion.div>
             ))}
           </motion.div>
@@ -147,32 +142,24 @@ const About = () => {
           variants={containerVariants}
           initial={isMobile() ? "visible" : "hidden"}
           whileInView={isMobile() ? undefined : "visible"}
-          viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)]"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid sm:grid-cols-2 gap-4 mt-12"
         >
-          <motion.h3
-            variants={itemVariants}
-            className="text-2xl font-bold mb-4 text-center"
-          >
-            Key Achievements
-          </motion.h3>
-          <motion.div
-            variants={itemVariants}
-            className="grid md:grid-cols-3 gap-6 text-center"
-          >
-            <div>
-              <div className="text-3xl font-bold mb-2">80k+</div>
-              <div className="text-purple-100">Active Mobile Users</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold mb-2">90%+</div>
-              <div className="text-purple-100">Test Coverage</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold mb-2">30%</div>
-              <div className="text-purple-100">Performance Improvement</div>
-            </div>
-          </motion.div>
+          {highlights.map((h) => (
+            <motion.div
+              key={h.title}
+              variants={itemVariants}
+              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 hover:border-accent-400/70 dark:hover:border-accent-500/50 transition-colors"
+            >
+              <div className="text-accent-500 text-2xl mb-3">{h.icon}</div>
+              <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-1.5">
+                {h.title}
+              </h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                {h.description}
+              </p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

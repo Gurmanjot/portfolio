@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { isMobile } from "../utils/isMobile";
-import { FaMobileAlt, FaGlobe } from "react-icons/fa";
+import { FaMobileAlt, FaGlobe, FaExternalLinkAlt } from "react-icons/fa";
 import { trackProjectClick } from "../utils/analytics";
 import SectionHeader from "./ui/SectionHeader";
 import CardSpotlight from "./ui/CardSpotlight";
@@ -60,9 +60,9 @@ const projects = [
 
 const typeIcon = (type) =>
   type === "Mobile App" ? (
-    <FaMobileAlt className="text-purple-500 text-lg mr-1" />
+    <FaMobileAlt className="text-accent-500 text-base" />
   ) : (
-    <FaGlobe className="text-blue-500 text-lg mr-1" />
+    <FaGlobe className="text-accent-500 text-base" />
   );
 
 const Projects = () => {
@@ -84,13 +84,14 @@ const Projects = () => {
       id="projects"
       className="py-20 bg-white dark:bg-slate-900/40 transition-colors"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-5xl">
         <SectionHeader
-          title="Projects"
-          subtitle="Select shipped products & platforms"
+          eyebrow="// projects"
+          title="Shipped products"
+          subtitle="Live apps and platforms I've contributed to, used by millions."
         />
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
           variants={containerVariants}
           initial={isMobile() ? "visible" : "hidden"}
           whileInView={isMobile() ? undefined : "visible"}
@@ -102,28 +103,23 @@ const Projects = () => {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block group focus:outline-none"
+              className="block group focus:outline-none rounded-xl focus-visible:ring-2 focus-visible:ring-accent-500/60"
               onClick={() =>
                 trackProjectClick(project.title, project.type, project.url)
               }
             >
-              <CardSpotlight className="bg-gradient-to-br from-slate-50/90 to-white/90 dark:from-slate-800/70 dark:to-slate-800/30 p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer focus:ring-2 focus:ring-purple-500/60 dark:focus:ring-pink-500/60 border border-slate-200/60 dark:border-slate-700/60 backdrop-blur">
-                <div className="flex items-center mb-2">
+              <CardSpotlight className="h-full bg-white dark:bg-slate-900/60 p-5 border border-slate-200 dark:border-slate-800 group-hover:border-accent-400/70 dark:group-hover:border-accent-500/50 transition-colors cursor-pointer">
+                <div className="flex items-center gap-2 mb-3">
                   {typeIcon(project.type)}
-                  <span
-                    className={`ml-2 px-2 py-1 text-xs rounded-full font-semibold tracking-wide ${
-                      project.type === "Mobile App"
-                        ? "bg-purple-100 text-purple-700"
-                        : "bg-blue-100 text-blue-700"
-                    }`}
-                  >
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     {project.type}
                   </span>
+                  <FaExternalLinkAlt className="ml-auto text-slate-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-                <div className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-pink-400 transition-colors duration-200">
+                <div className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
                   {project.title}
                 </div>
-                <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm min-h-[48px] leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm leading-relaxed">
                   {project.description}
                 </p>
               </CardSpotlight>

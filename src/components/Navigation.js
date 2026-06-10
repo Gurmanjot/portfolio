@@ -5,29 +5,36 @@ import { isMobile } from "../utils/isMobile";
 import { trackNavigation } from "../utils/analytics";
 import ThemeToggle from "./ui/ThemeToggle";
 
+const navItems = [
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Recommendations", href: "#recommendations" },
+  { name: "Contact", href: "#contact" },
+];
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      const offset = window.scrollY + 120;
+      let current = "";
+      for (const item of navItems) {
+        const el = document.querySelector(item.href);
+        if (el && el.offsetTop <= offset) current = item.href;
+      }
+      setActive(current);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Education", href: "#education" },
-    { name: "Recommendations", href: "#recommendations" },
-    { name: "Contact", href: "#contact" },
-  ];
 
   const scrollToSection = (href, sectionName) => {
     const element = document.querySelector(href);
@@ -56,25 +63,38 @@ const Navigation = () => {
         <div className="flex items-center justify-between gap-4">
           <motion.button
             whileHover={isMobile() ? undefined : { scale: 1.05 }}
-            className="text-lg md:text-xl font-extrabold tracking-tight text-slate-800 dark:text-white"
+            className="font-mono text-lg md:text-xl font-bold tracking-tight text-accent-600 dark:text-accent-400"
             onClick={() => scrollToSection("#home", "Home")}
           >
-            GS
+            GS<span className="text-slate-400 dark:text-slate-600">.</span>
           </motion.button>
           <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.href, item.name)}
-                className="relative text-sm font-medium text-slate-900 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-                whileHover={isMobile() ? undefined : { y: -2 }}
-                initial={{ opacity: 0, y: -15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: isMobile() ? 0 : index * 0.05 + 0.15 }}
-              >
-                {item.name}
-              </motion.button>
-            ))}
+            {navItems.map((item, index) => {
+              const isActive = active === item.href;
+              return (
+                <motion.button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href, item.name)}
+                  className={`relative text-sm font-medium transition-colors ${
+                    isActive
+                      ? "text-accent-600 dark:text-accent-400"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                  whileHover={isMobile() ? undefined : { y: -2 }}
+                  initial={{ opacity: 0, y: -15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: isMobile() ? 0 : index * 0.05 + 0.15 }}
+                >
+                  {item.name}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-accent-500"
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
             <ThemeToggle />
           </div>
           <div className="flex md:hidden items-center gap-2">

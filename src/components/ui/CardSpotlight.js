@@ -32,11 +32,11 @@ const CardSpotlight = ({ className = "", children }) => {
         className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
           background:
-            "radial-gradient(400px circle at var(--spot-x,50%) var(--spot-y,50%), rgba(168,85,247,0.25), transparent 60%)",
+            "radial-gradient(400px circle at var(--spot-x,50%) var(--spot-y,50%), rgba(59,130,246,0.12), transparent 60%)",
         }}
       />
       <div className="relative z-10">{children}</div>
-      <div className="absolute inset-0 ring-1 ring-white/10 dark:ring-white/5 rounded-xl pointer-events-none" />
+      <div className="absolute inset-0 ring-1 ring-slate-900/5 dark:ring-white/5 rounded-xl pointer-events-none" />
     </motion.div>
   );
 };

@@ -1,16 +1,25 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
+import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 import { isMobile } from "../utils/isMobile";
 import SectionHeader from "./ui/SectionHeader";
 
 const Experience = () => {
   const experiences = [
     {
-      title: "Senior Frontend Developer",
+      title: "Senior Mobile Developer",
       company: "JISR",
       period: "03/2024 - Present",
       location: "Remote (Ontario, Canada)",
+      tags: [
+        "React Native",
+        "React",
+        "TypeScript",
+        "WebSockets",
+        "Bitrise",
+        "Redux",
+        "React Query",
+      ],
       achievements: [
         [
           { text: "Led the frontend development and integration of in-house " },
@@ -148,6 +157,14 @@ const Experience = () => {
       company: "Razorpay",
       period: "09/2021 - 03/2024",
       location: "Bangalore, India",
+      tags: [
+        "React Native",
+        "React",
+        "Jest",
+        "TypeScript",
+        "iOS",
+        "Android",
+      ],
       achievements: [
         [
           {
@@ -228,6 +245,20 @@ const Experience = () => {
           { text: "." },
         ],
         [
+          { text: "Optimized app startup and " },
+          { text: "reduced load time by 2.5 seconds", highlight: true },
+          {
+            text: " through bundle optimization, rendering improvements and efficient API handling.",
+          },
+        ],
+        [
+          { text: "Mentored " },
+          { text: "4 junior developers", highlight: true },
+          {
+            text: ", raising team productivity and code quality through React Native and TypeScript best practices.",
+          },
+        ],
+        [
           {
             text: "Received ",
           },
@@ -247,9 +278,10 @@ const Experience = () => {
     },
     {
       title: "Software Engineer",
-      company: "GeekyAnts India Pvt Ltd",
+      company: "GeekyAnts",
       period: "06/2020 - 09/2021",
       location: "Bangalore, India",
+      tags: ["React Native", "Design System", "iOS", "Sentry", "Firebase"],
       achievements: [
         [
           {
@@ -268,11 +300,11 @@ const Experience = () => {
           { text: "." },
         ],
         [
-          { text: "Worked on an " },
+          { text: "Refactored the iOS UI of an " },
           { text: "eSports gaming app", highlight: true },
-          { text: " with daily user base of " },
-          { text: "50,000+", highlight: true },
-          { text: "." },
+          { text: " serving " },
+          { text: "130,000 daily active users", highlight: true },
+          { text: ", improving maintainability and performance." },
         ],
         [
           {
@@ -295,32 +327,18 @@ const Experience = () => {
           { text: " through rigorous QA and bug fixing." },
         ],
         [
-          {
-            text: "Gave a ",
-          },
-          {
-            text: "Tech talk",
-            highlight: true,
-            link: "https://www.youtube.com/watch?v=0e_Qgzap9FQ",
-          },
-          {
-            text: " at ",
-          },
-          {
-            text: "React Native Bangalore ",
-            highlight: true,
-          },
-          {
-            text: "(Topic: Bridging between React-Native and Swift)",
-          },
+          { text: "Increased " },
+          { text: "crash-free sessions to 99%", highlight: true },
+          { text: " by proactively fixing issues reported via Sentry and Firebase." },
         ],
       ],
     },
     {
-      title: "Trainee Software Engineer",
-      company: "GeekyAnts India Pvt",
+      title: "Software Engineer Intern",
+      company: "GeekyAnts",
       period: "02/2019 - 05/2020",
       location: "Bangalore, India",
+      tags: ["React Native", "React", "Reanimated", "Lottie"],
       achievements: [
         [
           {
@@ -398,154 +416,127 @@ const Experience = () => {
     },
   };
 
+  const renderSegments = (achievement, idx) => {
+    if (!Array.isArray(achievement)) {
+      const text =
+        typeof achievement === "object" ? achievement.text : achievement;
+      return (
+        <li
+          key={idx}
+          className="text-slate-600 dark:text-slate-400 text-[15px] flex items-start gap-2.5 leading-relaxed"
+        >
+          <span className="text-accent-500 mt-2 text-[6px]">●</span>
+          <span>{text}</span>
+        </li>
+      );
+    }
+    return (
+      <li
+        key={idx}
+        className="text-slate-600 dark:text-slate-400 text-[15px] flex items-start gap-2.5 leading-relaxed"
+      >
+        <span className="text-accent-500 mt-2 text-[6px]">●</span>
+        <span>
+          {achievement.map((segment, segIdx) => {
+            if (segment.link) {
+              return (
+                <a
+                  key={segIdx}
+                  href={segment.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-medium text-accent-600 dark:text-accent-400 hover:text-accent-500 transition-colors"
+                >
+                  {segment.text}
+                </a>
+              );
+            }
+            return (
+              <span
+                key={segIdx}
+                className={
+                  segment.highlight
+                    ? "font-semibold text-slate-900 dark:text-slate-100"
+                    : ""
+                }
+              >
+                {segment.text}
+              </span>
+            );
+          })}
+        </span>
+      </li>
+    );
+  };
+
   return (
     <section
       id="experience"
-      className="py-20 bg-white dark:bg-slate-900/40 transition-colors"
+      className="py-24 bg-white dark:bg-slate-900/30 transition-colors"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-4xl">
         <SectionHeader
-          title="Experience"
-          subtitle="Impact & growth across roles"
+          eyebrow="// experience"
+          title="Where I've worked"
+          subtitle="7+ years shipping cross-platform products across fintech, HR and gaming."
         />
 
-        <div className="relative">
-          {/* Timeline line: thin, centered, minimal */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500 z-0"></div>
+        <motion.div
+          variants={containerVariants}
+          initial={isMobile() ? "visible" : "hidden"}
+          whileInView={isMobile() ? undefined : "visible"}
+          viewport={{ once: true, amount: 0.1 }}
+          className="relative pl-6 md:pl-8"
+        >
+          {/* Timeline rail */}
+          <div className="absolute left-0 top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-800" />
 
-          <motion.div
-            variants={containerVariants}
-            initial={isMobile() ? "visible" : "hidden"}
-            whileInView={isMobile() ? undefined : "visible"}
-            viewport={{ once: true, amount: 0.2 }}
-            className="space-y-12"
-          >
+          <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className={`relative flex items-start ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-                whileHover={isMobile() ? undefined : { scale: 1.03 }}
-                whileTap={isMobile() ? undefined : { scale: 0.97 }}
-                transition={{ duration: isMobile() ? 0 : 0.6 }}
-              >
-                {/* Content */}
-                <div
-                  className={`w-full mx-auto z-10 md:w-10/12 md:mx-0 md:ml-0 ${
-                    index % 2 === 0 ? "md:pr-8" : "md:pl-8"
-                  }`}
-                >
-                  <div className="bg-white/90 dark:bg-slate-800/60 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-100 border border-gray-100 dark:border-slate-700/60 backdrop-blur">
-                    <div className="flex items-center gap-2 text-purple-500 mb-2">
-                      <FaBriefcase />
-                      <span className="text-base font-medium">
-                        {exp.period}
-                      </span>
-                    </div>
+              <motion.div key={index} variants={itemVariants} className="relative">
+                {/* Node */}
+                <span className="absolute -left-[26px] md:-left-[34px] top-1.5 h-3 w-3 rounded-full bg-accent-500 ring-4 ring-white dark:ring-[#080c14]" />
 
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-                      {exp.title}
-                    </h3>
-
-                    <div className="flex items-center gap-4 text-slate-600 dark:text-slate-400 mb-4">
-                      <div className="flex items-center gap-1">
-                        <FaMapMarkerAlt className="text-base" />
-                        <span className="text-base">{exp.company}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <FaCalendar className="text-base" />
-                        <span className="text-base">{exp.location}</span>
-                      </div>
-                    </div>
-
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, idx) => {
-                        // Support: array of segments (new), object (old), or string (old)
-                        if (Array.isArray(achievement)) {
-                          return (
-                            <li
-                              key={idx}
-                              className="text-slate-600 dark:text-slate-400 text-base flex items-start gap-2"
-                            >
-                              <span className="text-purple-500">•</span>
-                              <span>
-                                {achievement.map((segment, segIdx) => {
-                                  if (segment.link) {
-                                    return (
-                                      <a
-                                        key={segIdx}
-                                        href={segment.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={`underline hover:text-blue-600 transition-colors ${
-                                          segment.highlight
-                                            ? "font-bold text-blue-600"
-                                            : ""
-                                        }`}
-                                      >
-                                        {segment.text}
-                                      </a>
-                                    );
-                                  } else {
-                                    return (
-                                      <span
-                                        key={segIdx}
-                                        className={
-                                          segment.highlight
-                                            ? "font-bold text-pink-600"
-                                            : ""
-                                        }
-                                      >
-                                        {segment.text}
-                                      </span>
-                                    );
-                                  }
-                                })}
-                              </span>
-                            </li>
-                          );
-                        } else if (typeof achievement === "object") {
-                          // fallback for old object format
-                          const { text, highlight } = achievement;
-                          return (
-                            <li
-                              key={idx}
-                              className={`text-slate-600 dark:text-slate-400 text-base flex items-start gap-2 ${
-                                highlight ? "font-bold text-pink-600" : ""
-                              }`}
-                            >
-                              <span
-                                className={`text-purple-500 mt-1 ${
-                                  highlight ? "text-pink-600" : ""
-                                }`}
-                              >
-                                •
-                              </span>
-                              <span>{text}</span>
-                            </li>
-                          );
-                        } else {
-                          // fallback for plain string
-                          return (
-                            <li
-                              key={idx}
-                              className="text-slate-600 dark:text-slate-400 text-base flex items-start gap-2"
-                            >
-                              <span className="text-purple-500 mt-1">•</span>
-                              <span>{achievement}</span>
-                            </li>
-                          );
-                        }
-                      })}
-                    </ul>
-                  </div>
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                    {exp.title}
+                  </h3>
+                  <span className="text-accent-600 dark:text-accent-400 font-semibold">
+                    @ {exp.company}
+                  </span>
                 </div>
+
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4 font-mono text-xs text-slate-500 dark:text-slate-400">
+                  <span className="flex items-center gap-1.5">
+                    <FaCalendar className="text-[11px]" />
+                    {exp.period}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <FaMapMarkerAlt className="text-[11px]" />
+                    {exp.location}
+                  </span>
+                </div>
+
+                {exp.tags && (
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {exp.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[11px] px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <ul className="space-y-2">
+                  {exp.achievements.map((a, idx) => renderSegments(a, idx))}
+                </ul>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

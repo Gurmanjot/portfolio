@@ -4,30 +4,34 @@ import { isMobile } from "../../utils/isMobile";
 
 /**
  * SectionHeader
- * Consistent animated heading with subtle lamp/gradient effect bar.
+ * Mono eyebrow + clean title. Single accent, no gradients.
  */
-const SectionHeader = ({ title, subtitle, id }) => {
+const SectionHeader = ({ title, subtitle, id, eyebrow }) => {
   return (
     <motion.div
       id={id}
-      className="text-center mb-16 relative"
+      className="mb-14 relative"
       initial={isMobile() ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.6 }}
     >
-      <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 dark:from-purple-300 dark:via-pink-300 dark:to-purple-300">
+      {eyebrow && (
+        <div className="flex items-center gap-3 mb-3">
+          <span className="font-mono text-xs tracking-widest uppercase text-accent-600 dark:text-accent-400">
+            {eyebrow}
+          </span>
+          <span className="h-px flex-1 max-w-[120px] bg-slate-200 dark:bg-slate-800" />
+        </div>
+      )}
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+        <p className="mt-3 text-base text-slate-500 dark:text-slate-400 max-w-2xl">
           {subtitle}
         </p>
       )}
-      <div className="mt-6 w-40 h-1 mx-auto relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400 rounded-full blur-sm opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 dark:from-purple-300 dark:via-pink-300 dark:to-purple-300 rounded-full" />
-      </div>
     </motion.div>
   );
 };

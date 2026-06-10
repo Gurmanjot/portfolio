@@ -34,7 +34,7 @@ const Recommendations = () => {
       company: "Google",
       relationship: "Pranjul worked with Gurmanjot Singh on the same team",
       image:
-        "https://ui-avatars.com/api/?name=Pranjul+Sharma&background=6366f1&color=fff&size=150&rounded=true&bold=true",
+        "https://ui-avatars.com/api/?name=Pranjul+Sharma&background=2563eb&color=fff&size=150&rounded=true&bold=true",
       text: "I highly recommend Gurmanjot! I had the pleasure of working alongside him at GeekyAnts on several projects, and I was consistently impressed by his expertise in both mobile and web development. Gurmanjot has a remarkable ability to translate complex requirements into elegant and efficient code. He's not only adept at building robust web applications but also excels in creating seamless and intuitive mobile experiences. What truly stands out is his collaborative spirit and willingness to share knowledge, which made our team incredibly productive. Any team would be lucky to have him!",
       rating: 5,
       date: "July 6, 2025",
@@ -47,7 +47,7 @@ const Recommendations = () => {
       relationship:
         "Pawan was senior to Gurmanjot Singh but didn't manage Gurmanjot Singh directly",
       image:
-        "https://ui-avatars.com/api/?name=Pawan+Verma&background=ec4899&color=fff&size=150&rounded=true&bold=true",
+        "https://ui-avatars.com/api/?name=Pawan+Verma&background=3b82f6&color=fff&size=150&rounded=true&bold=true",
       text: "I've had the pleasure of working closely with Gurmanjot Singh across two different companies, first at GeekyAnts and later at Razorpay, and in both organizations, Gurman stood out as someone I could always rely on for consistently high-quality work and a positive attitude. Gurman is a highly skilled frontend and mobile developer with deep expertise in React and React Native. What stands out most is his ability to quickly pick up new concepts and technologies, he's incredibly self-driven and proactive when it comes to learning and staying updated with the latest trends. He has a knack for writing clean, efficient code, and his attention to detail is exceptional. Whether he's working on an individual project or collaborating with a team, Gurman always delivers and brings out the best in those around him. He's a true team player, happy to share knowledge and help others, while also being able to take ownership and drive initiatives independently. I'm confident that Gurmanjot will be a valuable asset to any team he joins and I highly recommend him.",
       rating: 5,
       date: "July 3, 2025",
@@ -60,7 +60,7 @@ const Recommendations = () => {
       relationship:
         "Shubhnik was senior to Gurmanjot Singh but didn't manage Gurmanjot Singh directly",
       image:
-        "https://ui-avatars.com/api/?name=Shubhnik+Singh&background=10b981&color=fff&size=150&rounded=true&bold=true",
+        "https://ui-avatars.com/api/?name=Shubhnik+Singh&background=1d4ed8&color=fff&size=150&rounded=true&bold=true",
       text: "I worked with Gurman on a team building a critical, merchant-facing mobile app at Razorpay. He's a quick learner who onboarded swiftly and made meaningful contributions to key features. Gurman regularly participated in product and design discussions, often suggesting thoughtful and practical solutions. He's a dependable teammate, and I can confidently say that his work is consistently of high quality.",
       rating: 5,
       date: "June 30, 2025",
@@ -72,7 +72,7 @@ const Recommendations = () => {
       company: "Coursera | Ex - Razorpay, Entri",
       relationship: "Aromal worked with Gurmanjot Singh on the same team",
       image:
-        "https://ui-avatars.com/api/?name=Aromal+Anil&background=f59e0b&color=fff&size=150&rounded=true&bold=true",
+        "https://ui-avatars.com/api/?name=Aromal+Anil&background=60a5fa&color=fff&size=150&rounded=true&bold=true",
       text: "I had the pleasure of working closely with Gurmanjot on Razorpay's Affordability team, and I wholeheartedly recommend him. Gurmanjot is a quick learner who effortlessly adapts to new environments, making him a valuable asset to any team. His clear communication skills ensure seamless collaboration, and I thoroughly enjoyed working alongside him. Gurmanjot's dedication and talent make him an invaluable addition to any organization.",
       rating: 5,
       date: "February 20, 2024",
@@ -95,12 +95,13 @@ const Recommendations = () => {
   return (
     <section
       id="recommendations"
-      className="py-20 bg-white dark:bg-slate-900/40 transition-colors"
+      className="py-24 bg-slate-50 dark:bg-slate-900/30 transition-colors"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-5xl">
         <SectionHeader
-          title="Recommendations"
-          subtitle="What colleagues and clients say about working with me"
+          eyebrow="// recommendations"
+          title="What colleagues say"
+          subtitle="Recommendations from teammates at Razorpay and GeekyAnts."
         />
 
         <motion.div
@@ -114,13 +115,12 @@ const Recommendations = () => {
             <motion.div
               key={recommendation.id}
               variants={cardVariants}
-              className="bg-slate-50/80 dark:bg-slate-800/60 backdrop-blur rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-200/60 dark:border-slate-700/60 relative group"
-              whileHover={isMobile() ? undefined : { scale: 1.02 }}
-              whileTap={isMobile() ? undefined : { scale: 0.98 }}
+              className="bg-white dark:bg-slate-900/60 rounded-xl p-6 transition-colors hover:border-accent-400/70 dark:hover:border-accent-500/50 border border-slate-200 dark:border-slate-800 relative group"
+              whileHover={isMobile() ? undefined : { y: -3 }}
             >
               {/* Quote icon */}
-              <div className="absolute top-4 right-4 text-purple-500/20 dark:text-purple-400/20 group-hover:text-purple-500/40 dark:group-hover:text-purple-400/40 transition-colors">
-                <FaQuoteLeft className="text-2xl" />
+              <div className="absolute top-5 right-5 text-accent-500/20 dark:text-accent-400/25 group-hover:text-accent-500/40 transition-colors">
+                <FaQuoteLeft className="text-xl" />
               </div>
 
               {/* Profile section */}
@@ -128,7 +128,7 @@ const Recommendations = () => {
                 <img
                   src={recommendation.image}
                   alt={recommendation.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-purple-500/20"
+                  className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-accent-500/20"
                 />
                 <div className="flex-1">
                   <h4 className="font-semibold text-slate-900 dark:text-slate-100 text-base">
@@ -137,7 +137,7 @@ const Recommendations = () => {
                   <p className="text-sm text-slate-600 dark:text-slate-400">
                     {recommendation.position}
                   </p>
-                  <p className="text-sm text-purple-600 dark:text-purple-400 font-bold">
+                  <p className="text-sm text-accent-600 dark:text-accent-400 font-semibold">
                     {recommendation.company}
                   </p>
                 </div>
@@ -171,8 +171,6 @@ const Recommendations = () => {
                 </div>
               </div>
 
-              {/* Hover gradient border effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </motion.div>
           ))}
         </motion.div>
@@ -192,7 +190,7 @@ const Recommendations = () => {
             href="https://www.linkedin.com/in/gurmanjot-singh-randhawa/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-105 group"
+            className="inline-flex items-center bg-accent-600 hover:bg-accent-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors group"
           >
             <FaLinkedin className="mr-2 group-hover:scale-110 transition-transform" />
             View Full LinkedIn Profile

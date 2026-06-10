@@ -63,8 +63,8 @@ const Footer = () => {
               Gurmanjot Singh Randhawa
             </h3>
             <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
-              Senior Frontend Developer passionate about creating exceptional
-              user experiences and building scalable web applications.
+              Senior Mobile &amp; Frontend Engineer building scalable React
+              Native &amp; React apps for iOS, Android and web.
             </p>
           </motion.div>
 
