@@ -1,5 +1,5 @@
 // Google Analytics Enhanced Tracking Utilities
-export const GA_TRACKING_ID = "G-59BQZ4DCFD";
+export const GA_TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
 
 // Initialize Google Analytics with enhanced configuration
 export const initGA = () => {
@@ -126,7 +126,7 @@ export const trackCustomEvent = (
   category,
   label,
   value = null,
-  customData = {}
+  customData = {},
 ) => {
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag("event", eventName, {

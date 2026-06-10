@@ -23,9 +23,9 @@ const Moon = () => (
     fill="none"
     stroke="currentColor"
     strokeWidth="2"
-    className="w-5 h-5"
+    className="w-4 h-4"
   >
-    <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79z" />
+    <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" />
   </svg>
 );
 
@@ -35,7 +35,7 @@ const ThemeToggle = () => {
     <motion.button
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="group relative inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-400/60 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900 hover:border-accent-400/70 transition-colors"
+      className="group relative inline-flex items-center justify-center w-9 h-9 rounded-xl bg-white/50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-400/60 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900 hover:border-accent-400/70 transition-colors"
       whileTap={{ scale: 0.88 }}
     >
       <span className="absolute inset-0 rounded-xl bg-accent-500/0 group-hover:bg-accent-500/10 transition-all" />
