@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 const FocusCard = ({ children, className = "" }) => {
   return (
     <motion.div
-      whileHover={{ y: -3 }}
       className={`relative group bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-6 transition-colors hover:border-accent-400/70 dark:hover:border-accent-500/50 ${className}`}
     >
       <div className="relative z-10">{children}</div>

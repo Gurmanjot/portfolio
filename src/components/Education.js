@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa";
-import { isMobile } from "../utils/isMobile";
 import SectionHeader from "./ui/SectionHeader";
 
 const education = [
@@ -32,10 +31,7 @@ const Education = () => {
           {education.map((edu, i) => (
             <motion.div
               key={edu.degree}
-              initial={isMobile() ? { opacity: 1 } : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              initial={{ opacity: 1, y: 0 }}
               className="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5"
             >
               <div className="text-accent-500 text-xl shrink-0">

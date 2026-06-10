@@ -397,22 +397,15 @@ const Experience = () => {
   });
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      },
-    },
+    hidden: { opacity: 1 },
+    visible: { opacity: 1 },
   };
 
   const itemVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { y: 0, opacity: 1 },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1,
-      transition: { duration: 0.6 },
     },
   };
 

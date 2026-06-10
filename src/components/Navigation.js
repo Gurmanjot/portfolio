@@ -49,9 +49,7 @@ const Navigation = () => {
   return (
     <motion.nav
       className={`fixed top-4 inset-x-0 z-50 flex justify-center`}
-      initial={{ y: isMobile() ? 0 : -90, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
+      initial={{ y: 0, opacity: 1 }}
     >
       <div
         className={`mx-4 md:mx-8 flex-1 max-w-6xl rounded-2xl border backdrop-blur-md px-4 md:px-6 py-2.5 shadow-sm transition-colors ${
@@ -80,10 +78,7 @@ const Navigation = () => {
                       ? "text-accent-600 dark:text-accent-400"
                       : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                   }`}
-                  whileHover={isMobile() ? undefined : { y: -2 }}
-                  initial={{ opacity: 0, y: -15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: isMobile() ? 0 : index * 0.05 + 0.15 }}
+                  initial={{ opacity: 1, y: 0 }}
                 >
                   {item.name}
                   {isActive && (

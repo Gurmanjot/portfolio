@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { isMobile } from "../../utils/isMobile";
 
 /**
  * SectionHeader
@@ -11,10 +10,7 @@ const SectionHeader = ({ title, subtitle, id, eyebrow }) => {
     <motion.div
       id={id}
       className="mb-14 relative"
-      initial={isMobile() ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 1, y: 0 }}
     >
       {eyebrow && (
         <div className="flex items-center gap-3 mb-3">

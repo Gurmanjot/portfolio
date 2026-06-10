@@ -16,13 +16,13 @@ const RESUME_URL =
 
 const About = () => {
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.15 } },
+    hidden: { opacity: 1 },
+    visible: { opacity: 1 },
   };
 
   const itemVariants = {
-    hidden: { y: 24, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    hidden: { y: 0, opacity: 1 },
+    visible: { y: 0, opacity: 1 },
   };
 
   const metrics = [

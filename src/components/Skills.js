@@ -67,13 +67,13 @@ const Skills = () => {
   ];
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.6, staggerChildren: 0.08 } },
+    hidden: { opacity: 1 },
+    visible: { opacity: 1 },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    hidden: { y: 0, opacity: 1 },
+    visible: { y: 0, opacity: 1 },
   };
 
   return (
@@ -115,10 +115,7 @@ const Skills = () => {
         </motion.div>
 
         <motion.div
-          initial={isMobile() ? { opacity: 1 } : { opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 1, y: 0 }}
           className="mt-10 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-slate-500 dark:text-slate-400"
         >
           <span>Also: Performance optimization</span>

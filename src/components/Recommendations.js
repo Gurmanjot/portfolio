@@ -6,23 +6,13 @@ import SectionHeader from "./ui/SectionHeader";
 
 const Recommendations = () => {
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.15,
-      },
-    },
+    hidden: { opacity: 1 },
+    visible: { opacity: 1 },
   };
 
   const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
-    },
+    hidden: { y: 0, opacity: 1 },
+    visible: { y: 0, opacity: 1 },
   };
 
   // Actual LinkedIn recommendations data
@@ -116,7 +106,6 @@ const Recommendations = () => {
               key={recommendation.id}
               variants={cardVariants}
               className="bg-white dark:bg-slate-900/60 rounded-xl p-6 transition-colors hover:border-accent-400/70 dark:hover:border-accent-500/50 border border-slate-200 dark:border-slate-800 relative group"
-              whileHover={isMobile() ? undefined : { y: -3 }}
             >
               {/* Quote icon */}
               <div className="absolute top-5 right-5 text-accent-500/20 dark:text-accent-400/25 group-hover:text-accent-500/40 transition-colors">
@@ -177,10 +166,7 @@ const Recommendations = () => {
 
         {/* Call to action */}
         <motion.div
-          initial={isMobile() ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          initial={{ opacity: 1, y: 0 }}
           className="text-center mt-12"
         >
           <p className="text-slate-600 dark:text-slate-400 mb-6">

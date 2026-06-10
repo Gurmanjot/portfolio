@@ -27,7 +27,6 @@ const Button = ({
   const Comp = as;
   return (
     <motion.div
-      whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
       className="inline-block"
     >

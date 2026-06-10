@@ -29,23 +29,13 @@ const Footer = () => {
   ];
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
-      },
-    },
+    hidden: { opacity: 1 },
+    visible: { opacity: 1 },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
-    },
+    hidden: { y: 0, opacity: 1 },
+    visible: { y: 0, opacity: 1 },
   };
 
   return (
@@ -81,7 +71,7 @@ const Footer = () => {
                 className={`text-2xl text-gray-400 dark:text-gray-500 transition-colors duration-300 ${link.color} dark:hover:text-gray-300`}
                 whileHover={isMobile() ? undefined : { scale: 1.15 }}
                 whileTap={isMobile() ? undefined : { scale: 0.95 }}
-                transition={{ duration: isMobile() ? 0 : 0.6 }}
+                transition={{ duration: isMobile() ? 0 : 0.2 }}
                 title={link.name}
                 onClick={() => {
                   // Track social media clicks from footer

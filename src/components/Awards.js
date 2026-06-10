@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaTrophy, FaExternalLinkAlt } from "react-icons/fa";
-import { isMobile } from "../utils/isMobile";
 import SectionHeader from "./ui/SectionHeader";
 
 const awards = [
@@ -28,10 +27,7 @@ const Awards = () => {
           {awards.map((award) => (
             <motion.div
               key={award.title}
-              initial={isMobile() ? { opacity: 1 } : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 1, y: 0 }}
               className="flex items-start gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5"
             >
               <div className="mt-1 text-accent-500 text-xl shrink-0">

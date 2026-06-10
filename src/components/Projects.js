@@ -67,14 +67,8 @@ const typeIcon = (type) =>
 
 const Projects = () => {
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.15,
-      },
-    },
+    hidden: { opacity: 1 },
+    visible: { opacity: 1 },
   };
 
   // itemVariants removed after refactor to SectionHeader + CardSpotlight
