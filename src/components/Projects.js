@@ -9,7 +9,7 @@ import CardSpotlight from "./ui/CardSpotlight";
 const projects = [
   {
     title: "MPL: Rummy, Real Money Games",
-    url: "https://apps.apple.com/in/app/rummy-real-money-games-mpl/id1447849626",
+    url: "https://www.mplgaming.com/",
     description:
       "India's leading online gaming platform for real money games like Rummy and Fantasy Cricket, trusted by millions of users.",
     type: "Mobile App",
